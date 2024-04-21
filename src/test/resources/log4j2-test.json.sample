@@ -1,0 +1,41 @@
+{ "configuration": { "status": "info", "name": "RoutingTest",
+                      "packages": "org.apache.logging.log4j.test",
+      "properties": {
+        "property": { "name": "filename",
+                      "value" : "target/log/snafu-$${sd:type}.log" }
+      },
+    "ThresholdFilter": { "level": "info" },
+    "appenders": {
+      "Console": { "name": "STDOUT", "PatternLayout": { "pattern": "%m%n" } },
+      "List": { "name": "List", "ThresholdFilter": { "level": "debug" } },
+      "appender": [
+         { "type": "Console", "name": "STDOUT", "PatternLayout": { "pattern": "%m%n" }},
+         { "type": "Routing",  "name": "Routing",
+          "Routes": { "pattern": "$${sd:type}",
+            "Route": [
+              {
+                "RollingFile": {
+                  "name": "Rolling-${sd:type}", "fileName": "${filename}",
+                  "filePattern": "target/log/snafu-${sd:type}.%i.log.gz",
+                  "PatternLayout": {"pattern": "%d %p %c{1.} [%t] %m%n"},
+                  "SizeBasedTriggeringPolicy": { "size": "500" }
+                }
+              },
+              { "ref": "STDOUT", "key": "Audit"},
+              { "ref": "List", "key": "Audit"}
+            ]
+          }
+        }
+      ]
+    },
+    "loggers": {
+      "logger": [
+        { "name": "EventLogger", "level": "info", "additivity": "false",
+          "AppenderRef": { "ref": "Routing" }}
+        { "name": "org.avidd.snafu", "level": "debug", "additivity": "false",
+          "AppenderRef": { "ref": "Routing" }}        
+      ],
+      "root": { "level": "info", "AppenderRef": { "ref": "STDOUT" }}
+    }
+  }
+}

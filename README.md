@@ -66,9 +66,9 @@ Recommender Systems
 + Digraph representation complexities
 * BFS: multiple sources, shortest paths, web crawler
 * Topological Sort: DepthFirstOrder
-    graph.directed.TopologicalSort
-    graph.directed.BlockingTopologicalSort
-    graph.directed.FutureTopologicalSort
+  * graph.directed.TopologicalSort
+  * graph.directed.BlockingTopologicalSort
+  * graph.directed.FutureTopologicalSort
 * Directed Cycle Detection
   * strongly connected components (connected vs strongly connected)
 * Kosaraju-Sharir algorithm
@@ -85,10 +85,8 @@ MSTs
 ** **TODO** Bor�vka                      *
 
 Shortest Paths
-* Dijkstra
-     graph.Dijkstra
-* Bellman-Ford
-     graph.BellmanFord
+* graph.Dijkstra
+* graph.BellmanFord
 
 
 String Sorts
@@ -99,23 +97,23 @@ String Sorts
 
 Tries
 * R-way tries
-    classic.maps.RWayTrie
+  * classic.maps.RWayTrie
 * ternary search tries
-    classic.maps.TernaryTree
+  * classic.maps.TernaryTree
 * **TODO** character-based operations    
 
 Substring Search
 * brute force
-    algs.string.BruteForce
-    algs.string.BruteForceExplicitBackup
+  * algs.string.BruteForce
+  * algs.string.BruteForceExplicitBackup
 * Knuth-Morris Pratt
-    algs.string.KnuthMorrisPratt
+  * algs.string.KnuthMorrisPratt
 * Boyer-Moore                     *
 * Rabin-Karp
-    algs.string.RabinKarpLasVegas
-    algs.string.RabinKarpLasVegasIncremental
-    algs.string.RabinKarpMonteCarlo
-    algs.string.RabinKarpMonteCarloIncremental
+  * algs.string.RabinKarpLasVegas
+  * algs.string.RabinKarpLasVegasIncremental
+  * algs.string.RabinKarpMonteCarlo
+  * algs.string.RabinKarpMonteCarloIncremental
 
 Regular Expressions
 * **TODO** REs and NFAs                    
@@ -136,5 +134,5 @@ Linear Programming
 * **TODO** Brewer                          
 * **TODO** Simplex                         
 
-**TODO** A*
-**TODO** IDA*
+* **TODO** A*
+* **TODO** IDA*

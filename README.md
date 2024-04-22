@@ -76,20 +76,19 @@
 * Kosaraju-Sharir algorithm
 * graph.directed.BlockingStronglyConnectedComponents?
 
-MSTs
+### MSTs
 * greedy algorithm
-** Kruskal
-** Prim
-*** array (optimal for dense graphs)
-*** **TODO** binary heap (much faster for sparse graphs)
-*** **TODO** 4-way heap (worth the trouble in performance-critical situations)
-*** **TODO** Fibonacci heap (best in theory but not worth implementing)
-** **TODO** Bor�vka                      *
+ * Kruskal
+ * Prim
+ *  array (optimal for dense graphs)
+* **TODO** binary heap (much faster for sparse graphs)
+* **TODO** 4-way heap (worth the trouble in performance-critical situations)
+* **TODO** Fibonacci heap (best in theory but not worth implementing)
+* **TODO** Bor�vka                      
 
 ### Shortest Paths
 * graph.Dijkstra
 * graph.BellmanFord
-
 
 ### String Sorts
 * LSD Radix Sort

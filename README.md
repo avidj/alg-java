@@ -1,4 +1,4 @@
-Basics
+### Mining
 * **TODO** Quaternary Search 
 * **TODO** Minhashing
 * **TODO** Locality Sensitive Hashing
@@ -6,55 +6,57 @@ Basics
 * **TODO** Frequent Itemsets
 * **TODO** A-Priori Algorithm 
 
-Clustering
+### Clustering
 * **TODO** k-means Algorithm
 * **TODO** BFR Algorithm (Bradley, Fayyad, Reina)
 * **TODO** CURE Algorithm
 * **TODO** Computational Advertising: Bipartite Graph Matching
 * **TODO** Balance Algorithm
 
-Social Networks
+### Social Networks
 * **TODO** Page Rank
 
-Community Detection
+### Community Detection
 * **TODO** BIGCLAM
 * **TODO** Spectral Graph Partitioning
 * **TODO** Spectral Clustering
 * **TODO** Trawling
 
-Data Streams
+### Data Streams
 * **TODO** Counting 1s
 * **TODO** Bloom Filters
 * **TODO** Sampling
 * **TODO** Counting Distinct Elements
 
-Dimensionality Reduction
+### Dimensionality Reduction
 * **TODO** SVD
 * **TODO** CUR
 
-Recommender Systems
+### Recommender Systems
 * **TODO** Collaborative Filtering
 * **TODO** Evaluating RS
 * **TODO** Latent Factor RS
 
-**TODO** Tarjan                       
-**TODO** fibonacci heap               
-**TODO** indexed heap
-**TODO** Patricia trees               
-**TODO** Suffix Trees                 
-**TODO** Cheriyan-Mehlhorn easier one-pass algorithm for SCCs 
+### Trees and Heaps
 
-* DFS
-  * graph.Dfs
+* **TODO** Tarjan                       
+* **TODO** fibonacci heap               
+* **TODO** indexed heap
+* **TODO** Patricia trees               
+* **TODO** Suffix Trees                 
+* **TODO** Cheriyan-Mehlhorn easier one-pass algorithm for SCCs 
+
+### Graphs 
+
+* graph.Dfs
   * cycles
   * connected components
-* BFS
-    graph.Bfs
+* graph.Bfs
     
 * **TODO** Bipartite Graphs                                                                
 * **TODO** Finding cycles                                                                  
- Euler Tour (K�nigsberger Br�ckenproblem)
- graph isomorphism 
+ * Euler Tour (K�nigsberger Br�ckenproblem)
+ * graph isomorphism 
 * **TODO** make a graph planar (there is a linear-time DFS-based planarity algorithm)      
 
 ## DIGRAPH problems
@@ -84,25 +86,25 @@ MSTs
 *** **TODO** Fibonacci heap (best in theory but not worth implementing)
 ** **TODO** Bor�vka                      *
 
-Shortest Paths
+### Shortest Paths
 * graph.Dijkstra
 * graph.BellmanFord
 
 
-String Sorts
+### String Sorts
 * LSD Radix Sort
 * MSD Radix Sort
 * **TODO** 3-way radix quicksort          
-* **TODO** suffix arrays                 (*) (only LSD variant not 3-way string quicksort)
+* **TODO** suffix arrays (only LSD variant not 3-way string quicksort)
 
-Tries
+### Tries
 * R-way tries
   * classic.maps.RWayTrie
 * ternary search tries
   * classic.maps.TernaryTree
 * **TODO** character-based operations    
 
-Substring Search
+### Substring Search
 * brute force
   * algs.string.BruteForce
   * algs.string.BruteForceExplicitBackup
@@ -115,22 +117,22 @@ Substring Search
   * algs.string.RabinKarpMonteCarlo
   * algs.string.RabinKarpMonteCarloIncremental
 
-Regular Expressions
+### Regular Expressions
 * **TODO** REs and NFAs                    
 
-Data Compression
+### Data Compression
 * run-length coding
 * Huffman compression
     compression.Huffman
 * **TODO** LZW compression                 
-* **TODO** Deflate                        (use R-Way Trie)
+* **TODO** Deflate (use R-Way Trie)
 
-Max-Flow
+### Max-Flow
 * Ford-Fulkerson
       graph.weighted.FordFulkerson
 * **TODO** maxflow-mincut                  
 
-Linear Programming
+### Linear Programming
 * **TODO** Brewer                          
 * **TODO** Simplex                         
 

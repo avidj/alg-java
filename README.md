@@ -1,3 +1,5 @@
+A collection of algorithms and data structure implemented just for fun and recreational programming.
+
 ### Mining
 * **TODO** Quaternary Search 
 * **TODO** Minhashing

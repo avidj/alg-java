@@ -1,147 +1,141 @@
-Basics
-* Quaternary Search
-* Minhashing
-* Locality Sensitive Hashing
-* Distance Measures
-* Frequent Itemsets
-* A-Priori Algorithm 
+A collection of algorithms and data structure implemented just for fun and recreational programming.
 
-Clustering
-* k-means Algorithm
-* BFR Algorithm (Bradley, Fayyad, Reina)
-* CURE Algorithm
-* Computational Advertising: Bipartite Graph Matching
-* Balance Algorithm
+### Mining
+* **TODO** Quaternary Search 
+* **TODO** Minhashing
+* **TODO** Locality Sensitive Hashing
+* **TODO** Distance Measures
+* **TODO** Frequent Itemsets
+* **TODO** A-Priori Algorithm 
 
-Social Networks
-* Page Rank
+### Clustering
+* **TODO** k-means Algorithm
+* **TODO** BFR Algorithm (Bradley, Fayyad, Reina)
+* **TODO** CURE Algorithm
+* **TODO** Computational Advertising: Bipartite Graph Matching
+* **TODO** Balance Algorithm
 
-Community Detection
-* BIGCLAM
-* Spectral Graph Partitioning
-* Spectral Clustering
-* Trawling
+### Social Networks
+* **TODO** Page Rank
 
-Data Streams
-* Counting 1s
-* Bloom Filters
-* Sampling
-* Counting Distinct Elements
+### Community Detection
+* **TODO** BIGCLAM
+* **TODO** Spectral Graph Partitioning
+* **TODO** Spectral Clustering
+* **TODO** Trawling
 
-Dimensionality Reduction
-* SVD
-* CUR
+### Data Streams
+* **TODO** Counting 1s
+* **TODO** Bloom Filters
+* **TODO** Sampling
+* **TODO** Counting Distinct Elements
 
-Recommender Systems
-* Collaborative Filtering
-* Evaluating RS
-* Latent Factor RS
+### Dimensionality Reduction
+* **TODO** SVD
+* **TODO** CUR
 
+### Recommender Systems
+* **TODO** Collaborative Filtering
+* **TODO** Evaluating RS
+* **TODO** Latent Factor RS
 
-GENERAL
+### Trees and Heaps
 
-Tarjan                       *
-fibonacci heap               *
-indexed heap
-Patricia trees               *
-Suffix Trees                 *
-Cheriyan-Mehlhorn easier one-pass algorithm for SCCs *
+* **TODO** Tarjan                       
+* **TODO** fibonacci heap               
+* **TODO** indexed heap
+* **TODO** Patricia trees               
+* **TODO** Suffix Trees                 
+* **TODO** Cheriyan-Mehlhorn easier one-pass algorithm for SCCs 
 
-algorithms-2
-* DFS
-    graph.Dfs
-* BFS
-    graph.Bfs
-* Connected Components
-    graph.ConnectedComponents
+### Graphs 
+
+* graph.Dfs
+  * cycles
+  * connected components
+* graph.Bfs
     
-Challenges
-* Bipartite Graphs                                                                *
-* Finding cycles                                                                  *
- Euler Tour (K�nigsberger Br�ckenproblem)
- graph isomorphism is an open problem (unknown complexity)
-* make a graph planar (there is a linear-time DFS-based planarity algorithm)      *
+* **TODO** Bipartite Graphs                                                                
+* **TODO** Finding cycles                                                                  
+ * Euler Tour (K�nigsberger Br�ckenproblem)
+ * graph isomorphism 
+* **TODO** make a graph planar (there is a linear-time DFS-based planarity algorithm)      
 
-DIGRAPH problems
+## DIGRAPH problems
 - shortest path: what is the shortest directed path from s to t
 - topological sort: can you draw a digraph so that all edges point upwards
 - strong connectivity: is there a directed path between all pairs of vertices    
 - transitive closure: for which veritces v and w is there a path from v to w 
 - PageRank: What is the importance of a web page
 + Digraph representation complexities
-* DFS
 * BFS: multiple sources, shortest paths, web crawler
 * Topological Sort: DepthFirstOrder
-    graph.directed.TopologicalSort
-    graph.directed.BlockingTopologicalSort
-    graph.directed.FutureTopologicalSort
-* Directed Cycle Detection                *
-strongly connected components (connected vs strongly connected)
+  * graph.directed.TopologicalSort
+  * graph.directed.BlockingTopologicalSort
+  * graph.directed.FutureTopologicalSort
+* Directed Cycle Detection
+  * strongly connected components (connected vs strongly connected)
 * Kosaraju-Sharir algorithm
-    graph.directed.BlockingStronglyConnectedComponents?
+* graph.directed.BlockingStronglyConnectedComponents?
 
-MSTs
+### MSTs
 * greedy algorithm
-** Kruskal
-** Prim
-*** array (optimal for dense graphs)
-*** binary heap (much faster for sparse graphs)
-*** 4-way heap (worth the trouble in performance-critical situations)
-*** Fibonacci heap (best in theory but not worth implementing)
-** Bor�vka                      *
+ * Kruskal
+ * Prim
+ *  array (optimal for dense graphs)
+* **TODO** binary heap (much faster for sparse graphs)
+* **TODO** 4-way heap (worth the trouble in performance-critical situations)
+* **TODO** Fibonacci heap (best in theory but not worth implementing)
+* **TODO** Bor�vka                      
 
-Shortest Paths
-* Dijkstra
-     graph.Dijkstra
-* Bellman-Ford
-     graph.BellmanFord
+### Shortest Paths
+* graph.Dijkstra
+* graph.BellmanFord
 
-
-String Sorts
+### String Sorts
 * LSD Radix Sort
 * MSD Radix Sort
-* 3-way radix quicksort          *
-* suffix arrays                 (*) (only LSD variant not 3-way string quicksort)
+* **TODO** 3-way radix quicksort          
+* **TODO** suffix arrays (only LSD variant not 3-way string quicksort)
 
-Tries
+### Tries
 * R-way tries
-    classic.maps.RWayTrie
+  * classic.maps.RWayTrie
 * ternary search tries
-    classic.maps.TernaryTree
-* character-based operations    *
+  * classic.maps.TernaryTree
+* **TODO** character-based operations    
 
-Substring Search
+### Substring Search
 * brute force
-    algs.string.BruteForce
-    algs.string.BruteForceExplicitBackup
+  * algs.string.BruteForce
+  * algs.string.BruteForceExplicitBackup
 * Knuth-Morris Pratt
-    algs.string.KnuthMorrisPratt
+  * algs.string.KnuthMorrisPratt
 * Boyer-Moore                     *
 * Rabin-Karp
-    algs.string.RabinKarpLasVegas
-    algs.string.RabinKarpLasVegasIncremental
-    algs.string.RabinKarpMonteCarlo
-    algs.string.RabinKarpMonteCarloIncremental
+  * algs.string.RabinKarpLasVegas
+  * algs.string.RabinKarpLasVegasIncremental
+  * algs.string.RabinKarpMonteCarlo
+  * algs.string.RabinKarpMonteCarloIncremental
 
-Regular Expressions
-* REs and NFAs                    *
+### Regular Expressions
+* **TODO** REs and NFAs                    
 
-Data Compression
+### Data Compression
 * run-length coding
 * Huffman compression
     compression.Huffman
-* LZW compression                 *
-* Deflate                         * (from job-interview: use R-Way Trie)
+* **TODO** LZW compression                 
+* **TODO** Deflate (use R-Way Trie)
 
-Max-Flow
+### Max-Flow
 * Ford-Fulkerson
       graph.weighted.FordFulkerson
-* maxflow-mincut                  *
+* **TODO** maxflow-mincut                  
 
-Linear Programming
-* Brewer                          *
-* Simplex                         *
+### Linear Programming
+* **TODO** Brewer                          
+* **TODO** Simplex                         
 
-Additionally?
-A*
-IDA*
+* **TODO** A*
+* **TODO** IDA*

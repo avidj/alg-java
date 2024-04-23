@@ -21,7 +21,7 @@ public class EdgeWeightedGraph implements GenericGraph {
    * Create a new weighted graph represented as an edge list.
    */
   public EdgeWeightedGraph() {
-    adj = new ArrayList<List<Edge>>();
+    adj = new ArrayList<>();
   }
 
   /**
@@ -48,7 +48,7 @@ public class EdgeWeightedGraph implements GenericGraph {
   private void addEdge(int v, Edge e) {
     List<Edge> vAdj = adj.get(v);
     if ( vAdj.isEmpty() ) {
-      vAdj = new LinkedList<Edge>();
+      vAdj = new LinkedList<>();
       adj.set(v, vAdj);
     }
     vAdj.add(e);
@@ -58,7 +58,7 @@ public class EdgeWeightedGraph implements GenericGraph {
    * @return an iterable over the edges in this graph
    */
   public Set<Edge> edges() {
-    Set<Edge> allEdges = new HashSet<Edge>();
+    Set<Edge> allEdges = new HashSet<>();
     for ( List<Edge> edges : adj ) {
       allEdges.addAll(edges);
     }
@@ -119,7 +119,7 @@ public class EdgeWeightedGraph implements GenericGraph {
   @Override
   public Iterable<Integer> adj(int v) {
     // TODO provide a proper iterator
-    List<Integer> adj = new ArrayList<Integer>();
+    List<Integer> adj = new ArrayList<>();
     for ( Edge edge : adjEdges(v) ) {
       adj.add(edge.other(v));
     }

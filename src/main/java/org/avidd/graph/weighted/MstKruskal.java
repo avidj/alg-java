@@ -18,7 +18,7 @@ public final class MstKruskal implements MstStrategy {
     EdgeWeightedGraph mst = new EdgeWeightedGraph();
     // maintain edges in a min heap
     final MinHeap<Edge> minHeap = 
-        new MinHeap<Edge>(new ComparableComparator<Edge>(), graph.edges());
+        new MinHeap<>(new ComparableComparator<Edge>(), graph.edges());
     // maintain union-find to detect cycles
     UnionFind uf = new WeightedQuickUnionPathCompression(graph.v());
     while ( !minHeap.isEmpty() && mst.e() < graph.v() - 1 ) {

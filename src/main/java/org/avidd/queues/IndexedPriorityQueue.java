@@ -40,8 +40,7 @@ public interface IndexedPriorityQueue<T> {
   public abstract Map.Entry<Integer, T> peek();
 
   /**
-   * @param index
-   *          to peek
+   * @param i index to peek
    * @return the element with that index if it exists
    */
   public abstract Map.Entry<Integer, T> peek(int i);

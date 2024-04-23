@@ -15,7 +15,7 @@ import org.avidd.graph.GenericGraph;
  */
 public class Digraph implements GenericGraph {
   // Storing adjacency lists allows for parallel edges.
-  private final List<List<Integer>> adj = new ArrayList<List<Integer>>();
+  private final List<List<Integer>> adj = new ArrayList<>();
 
   /**
    * Create a new edge.
@@ -32,8 +32,8 @@ public class Digraph implements GenericGraph {
       adj.add(Collections.<Integer> emptyList());
     }
     List<Integer> uAdj = adj.get(u);
-    if ( uAdj.size() == 0 ) {
-      uAdj = new LinkedList<Integer>();
+    if ( uAdj.isEmpty() ) {
+      uAdj = new LinkedList<>();
       adj.set(u, uAdj);
     }
     uAdj.add(v);

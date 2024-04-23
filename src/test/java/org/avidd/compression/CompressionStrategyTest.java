@@ -12,7 +12,7 @@ import java.io.InputStream;
 import org.junit.Assert;
 import org.junit.Test;
 
-import coursera.programs.HexDump;
+import helpers.HexDump;
 
 public abstract class CompressionStrategyTest {
 

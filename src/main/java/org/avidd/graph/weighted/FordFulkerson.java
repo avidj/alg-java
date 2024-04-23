@@ -36,7 +36,7 @@ public class FordFulkerson {
     edgeTo = new FlowEdge[g.v()];
     marked = new boolean[g.v()];
     // just do a BFS from s to t
-    List<Integer> queue = new ArrayList<Integer>();
+    List<Integer> queue = new ArrayList<>();
     queue.add(s);
     marked[s] = true;
     while ( !queue.isEmpty() ) {

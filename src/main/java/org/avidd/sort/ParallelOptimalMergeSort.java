@@ -24,7 +24,7 @@ class ParallelOptimalMergeSort implements SortStrategy {
     @SuppressWarnings("unchecked")
     V[] aux = (V[])new Object[a.length];
     System.arraycopy(a, 0, aux, 0, a.length);
-    MergeSort<V> sort = new MergeSort<V>(a, aux, comp, threshold);
+    MergeSort<V> sort = new MergeSort<>(a, aux, comp, threshold);
     sort.sort();
   }
 

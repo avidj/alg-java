@@ -5,10 +5,10 @@ import java.io.File;
 import java.io.PrintWriter;
 
 public class RandomArrayGenerator {
-  private static Random rand = new Random();
+  private static final Random rand = new Random();
 
   public static void main(String[] args) {
-    int[] numbers = genNumbers(10);
+    //int[] numbers = genNumbers(10);
     // writeNumbers(numbers);
     // numbers = genNumbers(100);
     // writeNumbers(numbers);
@@ -18,9 +18,9 @@ public class RandomArrayGenerator {
     // writeNumbers(numbers);
     // numbers = genNumbers(50000);
     // writeNumbers(numbers);
-    numbers = genNumbers(500000);
+    //numbers = genNumbers(500000);
     // numbers = genNumbers(10000000);
-    numbers = genNumbers(1000);
+    int[] numbers = genNumbers(1000);
     writeNumbers(numbers);
     numbers = genNumbers(10000);
     writeNumbers(numbers);
@@ -43,9 +43,8 @@ public class RandomArrayGenerator {
   }
 
   private static void writeNumbers(int[] numbers) {
-    try {
-      File file = new File(numbers.length + ".txt");
-      PrintWriter out = new PrintWriter(file);
+    File file = new File(numbers.length + ".txt");
+    try ( PrintWriter out = new PrintWriter(file) ) {
       out.println(numbers.length);
       int current;
       for ( int i = 0; i < numbers.length; i++ ) {

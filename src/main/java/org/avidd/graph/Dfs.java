@@ -45,7 +45,7 @@ class Dfs implements Traversal {
     if ( !hasPathTo(v) ) {
       return Collections.emptyList();
     }
-    Stack<Integer> path = new Stack<Integer>();
+    Stack<Integer> path = new Stack<>();
     for ( int x = v; x != s; x = edgeTo[x] ) {
       path.push(edgeTo[x]);
     }

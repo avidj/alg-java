@@ -7,7 +7,7 @@ public interface MstStrategy {
 
   /**
    * @param graph the edge weighted graph to compute the MST for
-   * @return the MST which is basically a subgraph of the input
+   * @return the MST which is basically a sub graph of the input
    */
   public EdgeWeightedGraph mst(EdgeWeightedGraph graph);
 

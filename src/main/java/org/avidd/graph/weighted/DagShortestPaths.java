@@ -47,7 +47,7 @@ public class DagShortestPaths implements ShortestPaths {
 
   @Override
   public List<Edge> pathTo(int v) {
-    List<Edge> path = new LinkedList<Edge>();
+    List<Edge> path = new LinkedList<>();
     for ( Edge e = edgeTo[v]; e != null; e = edgeTo[e.from()] ) {
       path.add(0, e);
     }

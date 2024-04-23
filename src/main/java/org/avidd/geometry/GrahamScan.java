@@ -7,7 +7,7 @@ import java.util.Stack;
 public final class GrahamScan {
 
   public static List<Point2D> convexHull(List<Point2D> aPoints) {
-    Stack<Point2D> hull = new Stack<Point2D>();
+    Stack<Point2D> hull = new Stack<>();
     // we start at the point with smallest y
     Collections.sort(aPoints, Point2D.yOrder());
 

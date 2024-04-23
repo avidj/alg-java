@@ -6,7 +6,7 @@ package org.avidd.sort;
  * sorted, you can count the inversions. During the merge step the algorithm iterates the partial
  * arrays from right to left. Therefore, fewer cases must be considered when incrementing the inv
  * counter: When the left key is larger than the right key then it is also larger than all other 
- * keys before the right key in the right subarray.
+ * keys before the right key in the right sub array.
  */
 public class CountInversions {
 

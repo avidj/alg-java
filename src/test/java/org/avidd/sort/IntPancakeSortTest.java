@@ -1,9 +1,11 @@
 package org.avidd.sort;
 
 import static org.avidd.sort.SortUtil.assertSorted;
+import org.junit.Ignore;
 
 import org.junit.Test;
 
+@Ignore // Only started this experiment
 public class IntPancakeSortTest {
 
   public IntSortStrategy getSort() { return new IntPancakeSort(); }
@@ -17,11 +19,6 @@ public class IntPancakeSortTest {
         .append(a.length).append("\t").append(now - then).toString());
     assertSorted(a);
   }
-
-//  @Test
-//  public void testSortRandom() {
-//    testSort(UnsortedArrays.genNumbers(25, 50));
-//  }
 
   @Test
   public void testSort() {

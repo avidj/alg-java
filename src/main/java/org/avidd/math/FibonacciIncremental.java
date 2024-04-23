@@ -4,6 +4,7 @@ import java.math.BigInteger;
 
 public final class FibonacciIncremental implements Fibonacci {
 
+  @Override
   public BigInteger fib(int n) {
     if ( n < 0 ) {
       throw new IllegalArgumentException();

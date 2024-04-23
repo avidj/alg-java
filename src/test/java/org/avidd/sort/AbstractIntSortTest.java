@@ -7,7 +7,7 @@ public abstract class AbstractIntSortTest {
 
   public abstract void sort(int[] a);
 
-  private final void testSort(int[] a) {
+  private void testSort(int[] a) {
     final long then = System.currentTimeMillis();
     sort(a);
     final long now = System.currentTimeMillis();

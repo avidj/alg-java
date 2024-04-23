@@ -32,6 +32,7 @@ import org.avidd.sort.PancakeUtil.Node;
  */
 class IntPancakeSort implements IntSortStrategy {
 
+  @Override
   public void sort(int[] a) {
     NaiveNode stack = toNaiveList(a);
     int steps = a.length * a.length;

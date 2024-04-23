@@ -5,6 +5,7 @@ import java.util.Comparator;
 
 class MergeSort implements SortStrategy {
 
+  @Override
   public <T> void sort(T[] a, Comparator<? super T> aComparator) {
     mergeSort(a, 0, a.length - 1, aComparator);
   }

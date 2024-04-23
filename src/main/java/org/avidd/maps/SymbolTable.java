@@ -16,13 +16,13 @@ public interface SymbolTable<K, V> {
   boolean contains(K key);
 
   /**
-   * @param aKey
+   * @param key
    * @return the largest entry with key smaller or equal aKey
    */
   Map.Entry<K, V> floor(K key);
 
   /**
-   * @param aKey
+   * @param key
    * @return the smallest entry with key larger or equal aKey
    */
   Map.Entry<K, V> ceiling(K key);

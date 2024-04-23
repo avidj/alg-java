@@ -9,7 +9,7 @@ class OptimalMergeSort implements SortStrategy {
 
   @Override
   public <V> void sort(V[] a, Comparator<? super V> comp) {
-    MergeSort<V> sort = new MergeSort<V>(comp);
+    MergeSort<V> sort = new MergeSort<>(comp);
     sort.sort(a);
   }
 

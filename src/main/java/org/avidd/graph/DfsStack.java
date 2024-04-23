@@ -22,7 +22,7 @@ class DfsStack implements Traversal {
   }
 
   private void traverse(GenericGraph g, int s) {
-    Stack<Integer> stack = new Stack<Integer>();
+    Stack<Integer> stack = new Stack<>();
     stack.push(s);
     marked[s] = true;
     while ( !stack.isEmpty() ) {
@@ -44,7 +44,7 @@ class DfsStack implements Traversal {
 
   @Override
   public List<Integer> pathTo(int v) {
-    List<Integer> path = new LinkedList<Integer>();
+    List<Integer> path = new LinkedList<>();
     path.add(0, v);
     for ( ; v != s; v = edgeTo[v] )
       path.add(0, v);

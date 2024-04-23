@@ -20,13 +20,13 @@ public final class FileUtil {
   private FileUtil() { /* hidden utility class constructor */ }
 
   /**
-   * Read a list of strings by splitting each line by whitespace characters.
+   * Read a list of strings by splitting each line by white space characters.
    * @param filename the file name
    * @return the list of strings read from the file
    * @throws RuntimeException if any exception occurs during file access
    */
   public static List<String> readStrings(String filename) {    
-    List<String> strings = new ArrayList<String>();
+    List<String> strings = new ArrayList<>();
     try ( BufferedReader in = 
           new BufferedReader(new InputStreamReader(new FileInputStream(filename), "UTF8")) ) {
       String line;
@@ -40,7 +40,7 @@ public final class FileUtil {
     } catch ( IOException e ) {
       throw new RuntimeException(e);
     }
-    List<String> result = new ArrayList<String>(strings.size());
+    List<String> result = new ArrayList<>(strings.size());
     for ( String s : strings ) {
       s = s.trim();
       if ( s.length() > 0 ) {
@@ -59,7 +59,7 @@ public final class FileUtil {
    * @throws IOException if an error occurs in lower layers
    */
   public static int[] readInts(String filename) throws NumberFormatException, IOException {
-    int[] ints = null;
+    int[] ints;
     int pos = 0;
     try ( BufferedReader in = new BufferedReader(new FileReader(filename)) ) {
       String line = in.readLine();
@@ -81,11 +81,11 @@ public final class FileUtil {
    */
   public static int[] readInts(int size, String filename) 
   throws NumberFormatException, IOException {
-    int[] ints = null;
+    int[] ints;
     int pos = 0;
     try ( BufferedReader in = new BufferedReader(new FileReader(filename)) ) {
       ints = new int[size];
-      String line = null;
+      String line;
       while ( ( line = in.readLine() ) != null ) {
         ints[pos++] = Integer.parseInt(line);
       }

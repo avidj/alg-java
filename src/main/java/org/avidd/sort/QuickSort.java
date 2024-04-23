@@ -6,6 +6,8 @@ import static org.avidd.sort.SortUtil.sortMedianOf3;
 import java.util.Comparator;
 
 class QuickSort implements SortStrategy {
+    
+  @Override
   public <T> void sort(T[] a, Comparator<? super T> comparator) {
     shuffle(a);
     quickSort(comparator, a, 0, a.length - 1);

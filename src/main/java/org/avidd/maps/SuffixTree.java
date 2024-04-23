@@ -7,8 +7,8 @@ import java.util.Set;
 /**
  * A patricia tree storing suffixes of keys.
  * 
- * Operations Suffix Infix = Prefix of a Suffix longest repeated substring
- * longest common substring longest palindromic substring
+ * Operations Suffix Infix = Prefix of a Suffix longest repeated sub string
+ * longest common sub string longest palindromic sub string
  * 
  * Applications String search computational biology
  * 

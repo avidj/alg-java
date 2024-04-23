@@ -28,11 +28,11 @@ public class BellmanFord implements ShortestPaths {
     edgeTo = new Edge[g.v()];
     Arrays.fill(distTo, Double.POSITIVE_INFINITY);
     List<Integer> relaxedPrev; // must copy to avoid concurrent modification
-    Set<Integer> relaxed = new LinkedHashSet<Integer>();
+    Set<Integer> relaxed = new LinkedHashSet<>();
     distTo[s] = 0;
     relaxed.add(0);
     for ( int i = 0; i < g.v(); i++ ) {
-      relaxedPrev = new ArrayList<Integer>(relaxed);
+      relaxedPrev = new ArrayList<>(relaxed);
       relaxed.clear();
       for ( int v : relaxedPrev )
         for ( Edge e : g.adjEdges(v) )
@@ -57,7 +57,7 @@ public class BellmanFord implements ShortestPaths {
 
   @Override
   public List<Edge> pathTo(int v) {
-    List<Edge> path = new LinkedList<Edge>();
+    List<Edge> path = new LinkedList<>();
     for ( Edge e = edgeTo[v]; e != null; e = edgeTo[e.from()] ) {
       path.add(0, e);
     }

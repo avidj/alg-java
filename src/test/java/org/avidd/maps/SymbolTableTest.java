@@ -4,7 +4,6 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.CoreMatchers.equalTo;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -34,7 +33,7 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
   T newSymbolTable(List<String> keys) {
     T map = newSymbolTable();
     for ( int i = 0; i < keys.size(); i++ ) {
-      map.put(keys.get(i), Integer.valueOf(i));
+      map.put(keys.get(i), i);
     }
     return map;
   }
@@ -103,7 +102,7 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
     Assert.assertThat(map.contains(EMPTY_STRING), is(true));
     List<String> keys = SEA_SHELLS;
     for ( int i = 0; i < keys.size(); i++ ) {
-      map.put(keys.get(i), Integer.valueOf(i));
+      map.put(keys.get(i), i);
     }
     Assert.assertThat(map.keySet().size(), is(equalTo(8)));
     Assert.assertThat(map.get(EMPTY_STRING), is(equalTo(100)));
@@ -118,7 +117,7 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
     List<String> keys = SEA_SHELLS;
     SymbolTable<String, Integer> map = newSymbolTable(keys);
     Assert.assertThat(map.keySet().size(), is(equalTo(7)));
-    Assert.assertThat(map.keySet(), is(equalTo((Set<String>)new HashSet<String>(keys))));
+    Assert.assertThat(map.keySet(), is(equalTo((Set<String>)new HashSet<>(keys))));
     for ( int i = 0, n = keys.size(); i < n; i++ ) {
       Assert.assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
     }
@@ -129,7 +128,7 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
     List<String> keys = FISCHERS_FRITZ;
     SymbolTable<String, Integer> map = newSymbolTable(keys);
     Assert.assertThat(map.keySet().size(), is(equalTo(5)));
-    Assert.assertThat(map.keySet(), is(equalTo((Set<String>)new HashSet<String>(keys))));
+    Assert.assertThat(map.keySet(), is(equalTo((Set<String>)new HashSet<>(keys))));
     for ( int i = 0, n = keys.size(); i < n; i++ ) {
       Assert.assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
     }
@@ -148,7 +147,7 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
   @Test
   public void testMin() {
     String[] sorted = UnsortedArrays.ulysses().clone();
-    sorted = new LinkedHashSet<String>(Arrays.asList(sorted)).toArray(new String[0]);
+    sorted = new LinkedHashSet<>(Arrays.asList(sorted)).toArray(new String[0]);
     Arrays.sort(sorted);
     sorted = Arrays.copyOfRange(sorted, 1000, 2000);
     SymbolTable<String, Integer> map = newSymbolTable(sorted);

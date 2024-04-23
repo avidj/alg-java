@@ -43,7 +43,7 @@ public class LLRedBlackBst<K, V> implements SymbolTable<K, V> {
 
   private Node<K, V> put(Node<K, V> h, K key, V val) {
     if ( h == null )
-      return new Node<K, V>(key, val, RED);
+      return new Node<>(key, val, RED);
     int cmp = comparator.compare(key, h.key);
 
     // update left, right, or value
@@ -171,7 +171,7 @@ public class LLRedBlackBst<K, V> implements SymbolTable<K, V> {
 
   @Override
   public Set<K> keySet() {
-    Set<K> keys = new LinkedHashSet<K>();
+    Set<K> keys = new LinkedHashSet<>();
     collectKeys(root, keys);
     if ( containsNull ) {
       keys.add(null);
@@ -244,7 +244,7 @@ public class LLRedBlackBst<K, V> implements SymbolTable<K, V> {
       Map.Entry<K, V> f = floor(h.right, key);
       if ( f != null ) return f;       // if there is a key in right subtree it is the floor
     }
-    return new ImmutableNode<K, V>(h); // k == key at root or there is no key in right subtree
+    return new ImmutableNode<>(h); // k == key at root or there is no key in right subtree
   }
 
   @Override
@@ -260,7 +260,7 @@ public class LLRedBlackBst<K, V> implements SymbolTable<K, V> {
       Map.Entry<K, V> c = ceil(h.left, key);
       if ( c != null ) return c;
     }
-    return new ImmutableNode<K, V>(h);
+    return new ImmutableNode<>(h);
   }
 
   @Override
@@ -270,7 +270,7 @@ public class LLRedBlackBst<K, V> implements SymbolTable<K, V> {
   
   private Map.Entry<K, V> max(Node<K, V> h) {
     if ( h == null ) return null;
-    if ( h.right == null ) return new ImmutableNode<K, V>(h);
+    if ( h.right == null ) return new ImmutableNode<>(h);
     return max(h.right);
   }
 
@@ -281,7 +281,7 @@ public class LLRedBlackBst<K, V> implements SymbolTable<K, V> {
   
   private Map.Entry<K, V> min(Node<K, V> h) {
     if ( h == null ) return null;
-    if ( h.left == null ) return new ImmutableNode<K, V>(h);
+    if ( h.left == null ) return new ImmutableNode<>(h);
     return min(h.left);
   }
 

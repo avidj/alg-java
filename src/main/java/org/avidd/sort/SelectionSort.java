@@ -7,6 +7,7 @@ import java.util.Comparator;
 
 class SelectionSort implements SortStrategy {
 
+  @Override
   public <T> void sort(T[] a, Comparator<? super T> comp) {
     int min;
     for ( int i = 0; i < a.length - 1; i++ ) {

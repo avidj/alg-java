@@ -22,7 +22,7 @@ public class FlowNetwork implements GenericGraph {
    * Create a new weighted graph represented as an edge list.
    */
   public FlowNetwork() {
-    adj = new ArrayList<Set<FlowEdge>>();
+    adj = new ArrayList<>();
   }
 
   /**
@@ -30,13 +30,13 @@ public class FlowNetwork implements GenericGraph {
    * 
    * @param v the origin of the edge
    * @param w the destination of the edge
-   * @param weight the weight of the edge
+   * @param capacity the capacity of the edge
    * @return this graph, for convenient concatenation of edges
    */
   public FlowNetwork edge(int v, int w, double capacity) {
     int m = Math.max(v, w);
     for ( int i = adj.size(); i <= m; i++ ) {
-      adj.add(new HashSet<FlowEdge>());
+      adj.add(new HashSet<>());
     }
     // create the edge
     FlowEdge edge = FlowEdge.edge(v, w, capacity);
@@ -49,7 +49,7 @@ public class FlowNetwork implements GenericGraph {
    * @return an iterable over the edges in this graph
    */
   public Set<FlowEdge> edges() {
-    Set<FlowEdge> allEdges = new HashSet<FlowEdge>();
+    Set<FlowEdge> allEdges = new HashSet<>();
     for ( Set<FlowEdge> edges : adj ) {
       allEdges.addAll(edges);
     }
@@ -58,7 +58,7 @@ public class FlowNetwork implements GenericGraph {
 
   @Override
   public Collection<Integer> adj(int v) {
-    Set<Integer> vAdj = new HashSet<Integer>();
+    Set<Integer> vAdj = new HashSet<>();
     for ( FlowEdge edge : adj.get(v) ) {
       vAdj.add(edge.to());
     }

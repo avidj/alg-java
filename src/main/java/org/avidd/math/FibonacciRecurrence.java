@@ -8,6 +8,7 @@ public final class FibonacciRecurrence implements Fibonacci {
   private static final BigDecimal PHI = BigDecimal.valueOf(1.0 + Math.sqrt(5.0) / 2.0);
   private static final BigDecimal PHI_D = BigDecimal.valueOf(1.0 - Math.sqrt(5.0) / 2.0);
 
+  @Override
   public BigInteger fib(int n) {
     if ( n < 0 ) {
       throw new IllegalArgumentException();

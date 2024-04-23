@@ -174,7 +174,7 @@ public class TernaryTree<V> implements StringSymbolTable<V> {
   @Override
   public Set<String> keySet() {
     // TODO: test
-    Set<String> keys = new LinkedHashSet<String>(); // linked for ordered
+    Set<String> keys = new LinkedHashSet<>(); // linked for ordered
                                                     // iteration
     StringBuilder key = new StringBuilder();
     if ( nullValue != null ) { keys.add((String)(( nullValue == NULL ) ? null : nullValue)); }
@@ -185,7 +185,7 @@ public class TernaryTree<V> implements StringSymbolTable<V> {
 
   @Override
   public Set<String> keysWithPrefix(String aPrefix) {
-    Set<String> keys = new LinkedHashSet<String>();
+    Set<String> keys = new LinkedHashSet<>();
     TstNode node = get(root, aPrefix, 0);
     if ( node != null ) {
       if ( node.value != null )
@@ -301,7 +301,7 @@ public class TernaryTree<V> implements StringSymbolTable<V> {
       current = current.right;
     }
     assert ( current != null && current.value != null );
-    return new Entry<V>(current);
+    return new Entry<>(current);
   }
 
   @Override
@@ -315,7 +315,7 @@ public class TernaryTree<V> implements StringSymbolTable<V> {
       current = current.left;
     }
     assert ( current != null && current.value != null );
-    return new Entry<V>(current);
+    return new Entry<>(current);
   }
   
 

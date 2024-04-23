@@ -63,7 +63,7 @@ public class FutureTopologicalSort implements TopologicalSort {
       marked = new boolean[graph.v()];
       edgeTo = new int[g.v()];
       onStack = new boolean[g.v()];
-      topOrder = new LinkedList<Integer>();
+      topOrder = new LinkedList<>();
     }
 
     @Override
@@ -90,7 +90,7 @@ public class FutureTopologicalSort implements TopologicalSort {
           edgeTo[w] = v;
           traverse(g, w);
         } else if ( onStack[w] ) {
-          cycle = new Stack<Integer>();
+          cycle = new Stack<>();
           for ( int x = v; x != w; x = edgeTo[x] )
             cycle.add(0, x);
           cycle.add(0, w);

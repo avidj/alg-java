@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
-import org.avidd.util.io.BinaryInputStream;
-import org.avidd.util.io.BinaryOutputStream;
+import helpers.BinaryInputStream;
+import helpers.BinaryOutputStream;
 
 /**
  * Huffman code compression algorithm.
@@ -136,7 +136,7 @@ public class Huffman implements CompressionStrategy {
   }
 
   private List<Boolean>[] toEncoding(TrieNode trie) {
-    Stack<Boolean> current = new Stack<Boolean>();
+    Stack<Boolean> current = new Stack<>();
     @SuppressWarnings({"unchecked"})
     List<Boolean>[] encoding = new List[radix];
     dfs(trie, current, encoding);
@@ -145,7 +145,7 @@ public class Huffman implements CompressionStrategy {
 
   private void dfs(TrieNode node, Stack<Boolean> current, List<Boolean>[] encoding) {
     if ( node.isLeaf() ) {
-      encoding[node.c] = new ArrayList<Boolean>(current);
+      encoding[node.c] = new ArrayList<>(current);
       // Collections.reverse(encoding[node.c]);
     } else {
       current.push(Boolean.FALSE);
@@ -159,7 +159,7 @@ public class Huffman implements CompressionStrategy {
   }
 
   private TrieNode buildTrie(BinaryInputStream in) throws IOException {
-    PriorityQueue<TrieNode> queue = new PriorityQueue<TrieNode>();
+    PriorityQueue<TrieNode> queue = new PriorityQueue<>();
     int[] frequencies = new int[radix];
     char c;
     while ( !in.isEmpty() ) {

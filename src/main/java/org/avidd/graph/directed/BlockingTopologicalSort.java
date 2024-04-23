@@ -20,7 +20,7 @@ public class BlockingTopologicalSort implements TopologicalSort {
     marked = new boolean[g.v()];
     edgeTo = new int[g.v()];
     onStack = new boolean[g.v()];
-    reversePost = new Stack<Integer>();
+    reversePost = new Stack<>();
     for ( int v = 0; v < g.v(); v++ ) {
       if ( !marked[v] ) {
         traverse(g, v);
@@ -39,7 +39,7 @@ public class BlockingTopologicalSort implements TopologicalSort {
         edgeTo[w] = v;
         traverse(g, w);
       } else if ( onStack[w] ) {
-        cycle = new Stack<Integer>();
+        cycle = new Stack<>();
         for ( int x = v; x != w; x = edgeTo[x] )
           cycle.add(0, x);
         cycle.add(0, w);
@@ -50,14 +50,17 @@ public class BlockingTopologicalSort implements TopologicalSort {
     reversePost.add(0, v);
   }
 
+  @Override
   public boolean hasCycle() {
     return ( cycle != null );
   }
 
+  @Override
   public List<Integer> getCycle() {
     return Collections.unmodifiableList(cycle);
   }
 
+  @Override
   public List<Integer> getTopologicalOrder() {
     return Collections.unmodifiableList(reversePost);
   }

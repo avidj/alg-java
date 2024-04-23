@@ -3,6 +3,7 @@ package org.avidd.sort;
 
 class IntSelectionSort implements IntSortStrategy {
 
+  @Override
   public void sort(int[] a) {
     int min;
     for ( int i = 0; i < a.length - 1; i++ ) {

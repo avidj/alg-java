@@ -10,7 +10,7 @@ public class PureTopologicalSort implements TopologicalSort {
 
   public PureTopologicalSort(Digraph g) {
     marked = new boolean[g.v()];
-    topOrder = new Stack<Integer>();
+    topOrder = new Stack<>();
     for ( int v = 0; v < g.v(); v++ ) {
       if ( !marked[v] ) {
         traverse(g, v);
@@ -27,14 +27,17 @@ public class PureTopologicalSort implements TopologicalSort {
     topOrder.add(0, v);
   }
 
+  @Override
   public boolean hasCycle() {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   public List<Integer> getCycle() {
     throw new UnsupportedOperationException();
   }
 
+  @Override
   public List<Integer> getTopologicalOrder() {
     return Collections.unmodifiableList(topOrder);
   }

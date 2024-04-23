@@ -1,7 +1,7 @@
 package org.avidd.string;
 
 /**
- * Linear time substring matching using the Rabin-Karp algorithm that uses
+ * Linear time sub string matching using the Rabin-Karp algorithm that uses
  * modular hashing to quickly find a position in the test that may match the
  * pattern. This is the Las-Vegas version that checks actual equality if a
  * position has the same hash as the pattern.

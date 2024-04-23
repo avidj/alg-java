@@ -19,6 +19,7 @@ public class WeightedQuickUnionPathCompression extends WeightedQuickUnion {
     return root(i);
   }
 
+  @Override
   int root(int i) {
     while ( i != id[i] ) {
       id[i] = id[id[i]];

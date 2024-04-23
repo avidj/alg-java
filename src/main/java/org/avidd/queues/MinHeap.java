@@ -7,11 +7,11 @@ public class MinHeap<T> implements PriorityQueue<T> {
   private final PriorityQueue<T> maxPQ;
 
   public MinHeap(Comparator<T> aComparator, int size) {
-    maxPQ = new MaxHeap<T>(new InvertedComparator<T>(aComparator), size);
+    maxPQ = new MaxHeap<>(new InvertedComparator<>(aComparator), size);
   }
 
   public MinHeap(Comparator<T> aComparator, Collection<T> elements) {
-    maxPQ = new MaxHeap<T>(new InvertedComparator<T>(aComparator), elements);
+    maxPQ = new MaxHeap<>(new InvertedComparator<>(aComparator), elements);
   }
 
   @Override

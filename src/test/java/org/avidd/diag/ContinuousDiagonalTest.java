@@ -1,4 +1,4 @@
-package org.avid.diag;
+package org.avidd.diag;
 
 import static org.junit.Assert.assertThat;
 

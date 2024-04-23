@@ -4,6 +4,7 @@ import static org.avidd.sort.SortUtil.swap;
 
 class IntHeapSort implements IntSortStrategy {
 
+  @Override
   public void sort(int[] a) {
     for ( int i = a.length / 2 - 1; i >= 0; i-- ) {
       sink(a, i, a.length - 1);

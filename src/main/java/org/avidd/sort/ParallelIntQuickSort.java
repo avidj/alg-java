@@ -21,6 +21,7 @@ class ParallelIntQuickSort implements IntSortStrategy {
     threshold = aThreshold;
   }
 
+  @Override
   public void sort(int[] a) {
     Collections.shuffle(Arrays.asList(a)); // shuffle to assert even
                                            // distribution of pivots

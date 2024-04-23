@@ -27,7 +27,7 @@ class KnuthMorrisPratt implements StringSearch {
     return -1;
   }
 
-  private static final int[][] compile(String pattern) {
+  private static int[][] compile(String pattern) {
     final int radix = 256;
     final int m = pattern.length();
     final int[][] dfa = new int[radix][pattern.length()];

@@ -15,7 +15,7 @@ public final class MstPrim implements MstStrategy {
   public EdgeWeightedGraph mst(EdgeWeightedGraph graph) {
     final boolean[] marked = new boolean[graph.v()];
     final EdgeWeightedGraph mst = new EdgeWeightedGraph();
-    final MinHeap<Edge> pq = new MinHeap<Edge>(new ComparableComparator<Edge>(), graph.e());
+    final MinHeap<Edge> pq = new MinHeap<>(new ComparableComparator<Edge>(), graph.e());
 
     visit(graph, 0, marked, pq); // we assume the graph is connected
     while ( !pq.isEmpty() && mst.e() < graph.v() - 1 ) {

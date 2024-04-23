@@ -19,7 +19,7 @@ public final class UnsortedArrays {
   private static final int[] UNSORTED_1M = genNumbers(1000000);
   private static final int[] UNSORTED_10M = genNumbers(10000000);
 
-  private static final Comparator<Integer> NATURAL_ORDER = new Comparator<Integer>() {
+  private static final Comparator<Integer> NATURAL_ORDER = new Comparator<>() {
     @Override
     public int compare(Integer o1, Integer o2) {
       return o1.compareTo(o2);
@@ -125,12 +125,12 @@ public final class UnsortedArrays {
   private static Integer[] copyOfInteger(int[] toSort) {
     Integer[] a = new Integer[toSort.length];
     for (int i = 0; i < toSort.length; i++) {
-      a[i] = Integer.valueOf(toSort[i]);
+      a[i] = toSort[i];
     }
     return a;
   }
   
-  private static final ObjectPool<String> STRINGS = new ObjectPool<String>();
+  private static final ObjectPool<String> STRINGS = new ObjectPool<>();
 
   private static String[] copyOfString(int[] toSort) {
     String[] a = new String[toSort.length];
@@ -149,10 +149,10 @@ public final class UnsortedArrays {
   }
 
   public static int[] genNumbers(int count, int max) {
-	    int[] numbers = new int[count];
-	    for (int i = 0; i < count; i++) {
-	      numbers[i] = RANDOM.nextInt(max);
-	    }
-	    return numbers;
-	  }
+    int[] numbers = new int[count];
+    for (int i = 0; i < count; i++) {
+      numbers[i] = RANDOM.nextInt(max);
+    }
+    return numbers;
+  }
 }

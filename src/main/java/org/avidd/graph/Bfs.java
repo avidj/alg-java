@@ -18,7 +18,7 @@ class Bfs implements Traversal {
   }
 
   private void traverse(GenericGraph g, int s) {
-    List<Integer> q = new LinkedList<Integer>();
+    List<Integer> q = new LinkedList<>();
     q.add(s);
     marked[s] = true;
     while ( !q.isEmpty() ) {
@@ -40,7 +40,7 @@ class Bfs implements Traversal {
 
   @Override
   public List<Integer> pathTo(int v) {
-    Stack<Integer> path = new Stack<Integer>();
+    Stack<Integer> path = new Stack<>();
     path.push(v);
     for ( ; v != s; v = edgeTo[v] )
       path.push(v);

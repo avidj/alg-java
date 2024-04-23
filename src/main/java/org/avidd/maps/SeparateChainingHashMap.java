@@ -6,7 +6,7 @@ import java.util.Set;
 public class SeparateChainingHashMap<K, V> implements SymbolTable<K, V> {
   // Typical load factor is 5 --> M = N / 5 --> constant-time ops
   private static final int M = 931;
-  private Node<K, V>[] st;
+  private final Node<K, V>[] st;
 
   @SuppressWarnings({"unchecked"})
   public SeparateChainingHashMap() {
@@ -33,7 +33,7 @@ public class SeparateChainingHashMap<K, V> implements SymbolTable<K, V> {
         return;
       }
     }
-    st[hash] = new Node<K, V>(key, val, st[hash]);
+    st[hash] = new Node<>(key, val, st[hash]);
   }
 
   @Override

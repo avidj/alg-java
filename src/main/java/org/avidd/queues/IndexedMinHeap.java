@@ -7,7 +7,7 @@ public class IndexedMinHeap<T> implements IndexedPriorityQueue<T> {
   private final IndexedPriorityQueue<T> maxPQ;
 
   public IndexedMinHeap(Comparator<T> aComparator, int size) {
-    maxPQ = new IndexedMaxHeap<T>(new InvertedComparator<T>(aComparator), size);
+    maxPQ = new IndexedMaxHeap<>(new InvertedComparator<>(aComparator), size);
   }
 
   @Override

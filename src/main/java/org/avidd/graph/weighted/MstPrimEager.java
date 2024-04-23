@@ -18,7 +18,7 @@ public final class MstPrimEager implements MstStrategy {
     final boolean[] marked = new boolean[graph.v()];
     final EdgeWeightedGraph mst = new EdgeWeightedGraph();
     final IndexedPriorityQueue<Edge> pq = new IndexedMinHeap<Edge>(
-        new ComparableComparator<Edge>(), graph.e());
+        new ComparableComparator<>(), graph.e());
 
     visit(graph, 0, marked, pq); // we assume the graph is connected
     while ( !pq.isEmpty() && mst.e() < graph.v() - 1 ) {

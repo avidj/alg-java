@@ -82,10 +82,10 @@ public final class Point2D implements Comparable<Point2D> {
     }
   };
 
-  private static final Comparator<Point2D> Y_ORDER = new Comparator<Point2D>() {
+  private static final Comparator<Point2D> Y_ORDER = new Comparator<>() {
     @Override
     public int compare(Point2D q1, Point2D q2) {
-      return Double.valueOf(q1.y).compareTo(Double.valueOf(q2.y));
+      return Double.valueOf(q1.y).compareTo(q2.y);
     }
   };
 }

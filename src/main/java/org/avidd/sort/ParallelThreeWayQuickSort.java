@@ -14,7 +14,7 @@ class ParallelThreeWayQuickSort implements SortStrategy {
 
   @Override
   public <T> void sort(T[] toSort, Comparator<? super T> aComparator) {
-    ThreeWayQuickSort<T> twq = new ThreeWayQuickSort<T>(toSort, aComparator, threshold);
+    ThreeWayQuickSort<T> twq = new ThreeWayQuickSort<>(toSort, aComparator, threshold);
     twq.sort();
   }
 

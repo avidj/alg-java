@@ -30,7 +30,7 @@ package org.avidd.sort;
  */
 public class IntBucketSort implements IntSortStrategy {
 
-  private static void algorithm(int[] a, int m) {
+  private static void doSort(int[] a, int m) {
     // create result array
     int[] result = new int[a.length];
     // create histogram array
@@ -58,6 +58,7 @@ public class IntBucketSort implements IntSortStrategy {
     }
   }
 
+  @Override
   public void sort(int[] a) {
     int max = 0;
     for ( int i = 0; i < a.length; i++ ) {
@@ -65,6 +66,6 @@ public class IntBucketSort implements IntSortStrategy {
         max = a[i];
       }
     }
-    algorithm(a, max + 1);
+    doSort(a, max + 1);
   }
 }

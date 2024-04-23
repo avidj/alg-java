@@ -2,6 +2,7 @@ package org.avidd.sort;
 
 class IntMergeSort implements IntSortStrategy {
 
+  @Override
   public void sort(int[] a) {
     mergeSort(a, 0, a.length - 1);
   }

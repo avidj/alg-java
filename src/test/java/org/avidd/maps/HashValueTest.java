@@ -55,7 +55,7 @@ public class HashValueTest {
 
   private void algorithmicComplexityAttack(int severity) {
     String[] r = new String[] { "Aa", "BB" };
-    Map<String, String> map = new HashMap<String, String>();
+    Map<String, String> map = new HashMap<>();
 
     for ( int i = 0; i < severity; i++ ) {
       String s = toString(r, i);

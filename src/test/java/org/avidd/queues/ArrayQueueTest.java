@@ -10,7 +10,7 @@ public class ArrayQueueTest {
 
   @Test
   public void testResize() {
-    Queue<Integer> q = new ArrayQueue<Integer>(2);
+    Queue<Integer> q = new ArrayQueue<>(2);
     q.enqueue(1);
     Assert.assertThat(q.size(), is(equalTo(1)));
     Assert.assertThat(q.isEmpty(), is(false));

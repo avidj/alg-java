@@ -21,7 +21,7 @@ public class EdgeWeightedDigraph extends Digraph {
    * Create a new weighted graph represented as an edge list.
    */
   public EdgeWeightedDigraph() {
-    adj = new ArrayList<Set<Edge>>();
+    adj = new ArrayList<>();
   }
 
   /**
@@ -35,7 +35,7 @@ public class EdgeWeightedDigraph extends Digraph {
   public EdgeWeightedDigraph edge(int v, int w, double weight) {
     int m = Math.max(v, w);
     for ( int i = adj.size(); i <= m; i++ ) {
-      adj.add(new HashSet<Edge>());
+      adj.add(new HashSet<>());
     }
     // create the edge
     Edge edge = Edge.edge(v, w, weight);
@@ -47,7 +47,7 @@ public class EdgeWeightedDigraph extends Digraph {
    * @return an iterable over the edges in this graph
    */
   public Set<Edge> edges() {
-    Set<Edge> allEdges = new HashSet<Edge>();
+    Set<Edge> allEdges = new HashSet<>();
     for ( Set<Edge> edges : adj ) {
       allEdges.addAll(edges);
     }

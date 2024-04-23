@@ -6,7 +6,7 @@ import org.junit.Ignore;
 public class PatriciaTreeTest extends CharSeqMapTest {
   @Override
   PatriciaTree<Integer> newSymbolTable() {
-    return new PatriciaTree<Integer>();
+    return new PatriciaTree<>();
   }
 
 }

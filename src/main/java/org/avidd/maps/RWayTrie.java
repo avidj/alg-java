@@ -28,7 +28,7 @@ public class RWayTrie<V> implements StringSymbolTable<V> {
 
   private TrieNode<V> put(TrieNode<V> node, String key, V value, int d) {
     if ( node == null ) {
-      node = new TrieNode<V>();
+      node = new TrieNode<>();
     }
     if ( d == key.length() ) {
       if ( value == null ) {
@@ -117,7 +117,7 @@ public class RWayTrie<V> implements StringSymbolTable<V> {
   public Set<String> keySet() {
     // DKE: Not useful to use a HashSet because then we do the hashing which the
     // Trie replaces!
-    Set<String> keys = new HashSet<String>();
+    Set<String> keys = new HashSet<>();
     StringBuilder key = new StringBuilder();
     collect(root, key, keys);
     if ( containsNull ) {
@@ -178,7 +178,7 @@ public class RWayTrie<V> implements StringSymbolTable<V> {
 
   @Override
   public Set<String> keysWithPrefix(String aPrefix) {
-    Set<String> keys = new LinkedHashSet<String>();
+    Set<String> keys = new LinkedHashSet<>();
     TrieNode<V> x = get(root, aPrefix, 0);
     if ( x != null ) {
       if ( x.value != null ) {

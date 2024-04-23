@@ -6,7 +6,7 @@ import java.util.WeakHashMap;
 
 /**
  * An object pool for caching immutable objects. Objects are stored in a weak hash map. To use, 
- * create a static factory for the immuble class and, instead of returning freshly constructed
+ * create a static factory for the immutable class and, instead of returning freshly constructed
  * objects, return the result of {@link #intern(Object)}.
  * 
  * @author David Kensche
@@ -14,7 +14,7 @@ import java.util.WeakHashMap;
  * @param <T> the type of cached objects
  */
 public class ObjectPool<T> {
-  private final Map<T, WeakReference<T>> pool = new WeakHashMap<T, WeakReference<T>>();
+  private final Map<T, WeakReference<T>> pool = new WeakHashMap<>();
 
   /**
    * Returns a cached equal instance of the input object or caches the input itself and returns it
@@ -31,7 +31,7 @@ public class ObjectPool<T> {
         return result;
       }
     }
-    pool.put(object, new WeakReference<T>(object));
+    pool.put(object, new WeakReference<>(object));
     return object;
   }
 }

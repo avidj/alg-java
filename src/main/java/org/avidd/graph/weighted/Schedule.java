@@ -60,7 +60,7 @@ class Schedule {
     public Job(int aId, double aDuration, Collection<Job> aMustCompleteBefore) {
       id = aId;
       duration = aDuration;
-      mustCompleteBefore = Collections.unmodifiableList(new ArrayList<Job>(aMustCompleteBefore));
+      mustCompleteBefore = Collections.unmodifiableList(new ArrayList<>(aMustCompleteBefore));
     }
   }
 

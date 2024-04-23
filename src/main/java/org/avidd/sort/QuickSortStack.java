@@ -10,7 +10,7 @@ class QuickSortStack implements SortStrategy {
   
   @Override
   public <T> void sort(T[] a, Comparator<? super T> comparator) {
-    Stack<Integer> stack = new Stack<Integer>();
+    Stack<Integer> stack = new Stack<>();
     int l = 0;
     int r = a.length - 1;
     int l2;

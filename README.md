@@ -1,3 +1,5 @@
+The `helpers` package consists of utilities copied from Sedgewick's algorithms lectures offered on coursera. These packages are not included here. If you want to execute the tests you will have to collect these freely available sources on your own. 
+
 A collection of algorithms and data structure implemented just for fun and recreational programming.
 
 ### Mining

@@ -1,3 +1,3 @@
-A collection of algorithms and data structure implemented just for fun and recreational programming.
-I did this for main own entertainment and training. Consequently, there is little documentation and dependencies are not up-to-date.
+A collection of algorithms and data structures implemented just for fun and recreational programming.
+I did this for my own entertainment and for refreshing knowledge. Consequently, there is little documentation and dependencies are not up-to-date.
 

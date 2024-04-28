@@ -57,8 +57,6 @@ public class EdgeWeightedDigraph extends Digraph {
   /**
    * @param v the vertex to get the adjacency list for
    * @return an iterable over the adjacency list of v
-   * 
-   * TODO: provide a superclass of Edge without weights, make this generic
    */
   public Collection<Edge> adjEdges(int v) {
     return Collections.unmodifiableSet(adj.get(v));
@@ -90,7 +88,7 @@ public class EdgeWeightedDigraph extends Digraph {
   }
 
   @Override
-  public int hashCode() {
+  public final int hashCode() {
     int result = HASH_SEED;
     for ( int v = 0; v < v(); v++ ) {
       result = result * HASH_SHIFT + adj(v).hashCode();
@@ -98,9 +96,8 @@ public class EdgeWeightedDigraph extends Digraph {
     return result;
   }
 
-  // TODO: mind inheritance!
   @Override
-  public boolean equals(Object other) {
+  public final boolean equals(Object other) {
     if ( this == other ) { return true; }
     if ( ! ( other instanceof EdgeWeightedDigraph ) ) { return false; }
     EdgeWeightedDigraph that = (EdgeWeightedDigraph)other;
@@ -111,7 +108,6 @@ public class EdgeWeightedDigraph extends Digraph {
 
   /**
    * @return a digraph containing the same edges with negated weights
-   * TODO: this also exists in EdgeWeightedGraph
    */
   public EdgeWeightedDigraph negateEdges() {
     EdgeWeightedDigraph neg = new EdgeWeightedDigraph();

@@ -73,10 +73,12 @@ public class EdgeWeightedGraph implements GenericGraph {
     return Collections.unmodifiableList(adj.get(v));
   }
 
+  @Override
   public int v() {
     return adj.size();
   }
 
+  @Override
   public int e() {
     int e = 0;
     for ( List<Edge> adjSet : adj ) {
@@ -97,7 +99,7 @@ public class EdgeWeightedGraph implements GenericGraph {
   }
 
   @Override
-  public int hashCode() {
+  public final int hashCode() {
     int result = HASH_SEED;
     for ( int v = 0; v < v(); v++ ) {
       result = result * HASH_SHIFT + adjEdges(v).hashCode();
@@ -105,9 +107,8 @@ public class EdgeWeightedGraph implements GenericGraph {
     return result;
   }
 
-  // TODO: mind inheritance 
   @Override
-  public boolean equals(Object other) {
+  public final  boolean equals(Object other) {
     if ( this == other ) { return true; }
     if ( ! ( other instanceof EdgeWeightedGraph ) ) { return false; }
     EdgeWeightedGraph that = (EdgeWeightedGraph)other;

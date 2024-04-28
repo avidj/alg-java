@@ -38,8 +38,9 @@ public class MaxHeap<T> implements PriorityQueue<T> {
 
   @Override
   public void insert(T element) {
-    if ( size == heap.length - 1 )//TODO resize
+    if ( size == heap.length - 1 ) {// TODO resize
       throw new IllegalStateException("overflow");
+    }
     size++;
     heap[size] = element;
     swim(size);

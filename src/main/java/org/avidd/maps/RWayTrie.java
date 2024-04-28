@@ -9,7 +9,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class RWayTrie<V> implements StringSymbolTable<V> {
-  // DKE: could be used to enable null values
   private static final Object DISTINCT_NULL = new Object();
   static final int RDX_EXTENDED_ASCII = 256;
   private TrieNode<V> root;

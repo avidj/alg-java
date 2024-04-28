@@ -23,6 +23,4 @@ public class MemoizedFunctionFactory {
       return cache.computeIfAbsent(t, f);
     }
   }
-  
-  // TODO: modify such that it works for any function
 }

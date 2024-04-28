@@ -4,9 +4,6 @@ package org.avidd.string;
  * KMP computes a deterministic finite automaton (DFA) from a pattern. It then
  * matches the pattern with an input String using that DFA in time linear to the
  * input text length.
- * 
- * TODO: change interface such that it can match against a stream, what would
- * search(..) return?
  */
 class KnuthMorrisPratt implements StringSearch {
 

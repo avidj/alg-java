@@ -244,7 +244,6 @@ public class TernaryTree<V> implements StringSymbolTable<V> {
 
   @Override
   public int rank(String aKey) {
-    // TODO: test
     // TODO Auto-generated method stub
     return 0;
   }

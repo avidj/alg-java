@@ -12,7 +12,6 @@ import org.avidd.graph.directed.TopologicalSort;
 import org.junit.Assert;
 import org.junit.Test;
 
-// TODO: TEST GRAPHS WITH CYCLE
 public abstract class TopologicalSortTest {
 
   @Test

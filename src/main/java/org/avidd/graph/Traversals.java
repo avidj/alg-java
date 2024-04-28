@@ -3,9 +3,6 @@ package org.avidd.graph;
 /**
  * Utility class providing graph traversal strategies.
  * 
- * TODO: parallelize
- * TODO: is this useful?
- *  
  * @author David Kensche
  */
 public final class Traversals {

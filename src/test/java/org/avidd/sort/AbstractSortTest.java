@@ -4,7 +4,7 @@ import static org.avidd.sort.SortUtil.assertSorted;
 
 import java.util.Comparator;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public abstract class AbstractSortTest {
 

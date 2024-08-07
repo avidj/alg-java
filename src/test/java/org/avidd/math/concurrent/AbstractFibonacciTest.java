@@ -1,7 +1,7 @@
 package org.avidd.math.concurrent;
 
 import org.avidd.math.Fibonacci;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public abstract class AbstractFibonacciTest {
   

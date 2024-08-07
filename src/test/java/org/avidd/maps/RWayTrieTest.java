@@ -1,8 +1,8 @@
 package org.avidd.maps;
 
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 
-@Ignore // Not yet implemented
+@Disabled // Not yet implemented
 public class RWayTrieTest extends CharSeqMapTest {
 
   @Override

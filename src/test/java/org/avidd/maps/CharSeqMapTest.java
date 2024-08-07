@@ -6,10 +6,13 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import org.apache.logging.log4j.core.helpers.Assert;
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.hamcrest.MatcherAssert;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 public abstract class CharSeqMapTest extends SymbolTableTest<StringSymbolTable<Integer>> {
   @Test
@@ -20,8 +23,8 @@ public abstract class CharSeqMapTest extends SymbolTableTest<StringSymbolTable<I
       map.put(keys.get(i), i);
     }
     Collection<String> keySet = map.keysWithPrefix("fi");
-    Assert.assertThat(keySet.size(), is(equalTo(3)));
-    Assert.assertTrue(keySet.containsAll(Arrays.asList("fische", "fischt", "fischer's")));
+    MatcherAssert.assertThat(keySet.size(), is(equalTo(3)));
+    assertTrue(keySet.containsAll(Arrays.asList("fische", "fischt", "fischer's")));
   }
 
   @Test
@@ -32,7 +35,7 @@ public abstract class CharSeqMapTest extends SymbolTableTest<StringSymbolTable<I
       map.put(keys.get(i), i);
     }
     String prefix = map.longestPrefix("fischereihafenarbeiter");
-    Assert.assertThat(prefix, is(equalTo("fische")));
+    MatcherAssert.assertThat(prefix, is(equalTo("fische")));
   }
 
   @Test
@@ -43,7 +46,7 @@ public abstract class CharSeqMapTest extends SymbolTableTest<StringSymbolTable<I
       map.put(keys.get(i), i);
     }
     String prefix = map.longestPrefix("fischer'ssadfsadf");
-    Assert.assertThat(prefix, is(equalTo("fischer's")));
+    MatcherAssert.assertThat(prefix, is(equalTo("fischer's")));
   }
 
   @Test
@@ -54,7 +57,7 @@ public abstract class CharSeqMapTest extends SymbolTableTest<StringSymbolTable<I
       map.put(keys.get(i), i);
     }
     String prefix = map.longestPrefix("fritzsfdsf");
-    Assert.assertThat(prefix, is(equalTo("fritz")));
+    MatcherAssert.assertThat(prefix, is(equalTo("fritz")));
   }
 
   @Test
@@ -65,26 +68,26 @@ public abstract class CharSeqMapTest extends SymbolTableTest<StringSymbolTable<I
       map.put(keys.get(i), i);
     }
     String prefix = map.longestPrefix("fritz");
-    Assert.assertThat(prefix, is(equalTo("fritz")));
+    MatcherAssert.assertThat(prefix, is(equalTo("fritz")));
   }
   
-  @Test @Ignore
+  @Test @Disabled
   public void testRank() {
-    Assert.fail();
+    fail();
   }
   
-  @Test @Ignore
+  @Test @Disabled
   public void testRange() {
-    Assert.fail();
+    fail();
   }
   
-  @Test @Ignore
+  @Test @Disabled
   public void testDeleteMin() {
-    Assert.fail();
+    fail();
   }
 
-  @Test @Ignore
+  @Test @Disabled
   public void testDeleteMax() {
-    Assert.fail();
+    fail();
   }
 }

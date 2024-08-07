@@ -7,14 +7,14 @@ import org.avidd.math.FibonacciAll;
 import org.avidd.math.FibonacciIncremental;
 import org.avidd.math.FibonacciRecurrence;
 import org.avidd.math.FibonacciSwap;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.hamcrest.MatcherAssert;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 public class FibonacciTest {
 
   @Test
-  @Ignore
+  @Disabled
   public void testAllFib() {
     int[] values = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 10000, 100000 };
     for ( int n : values ) {
@@ -39,7 +39,7 @@ public class FibonacciTest {
   }
 
   @Test
-  @Ignore
+  @Disabled
   public void testRecurrenceFib() {
     int[] values = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 10000, 100000,
         1000000 };
@@ -55,8 +55,8 @@ public class FibonacciTest {
       System.err.println("fibAll(" + n + ") = " + new FibonacciAll().fib(n));
       System.err.println("fibIncremental(" + n + ") = " + new FibonacciIncremental().fib(n));
       System.err.println("fibSwap(" + n + ") = " + new FibonacciSwap().fib(n));
-      Assert.assertThat(new FibonacciAll().fib(n), is(equalTo(new FibonacciIncremental().fib(n))));
-      Assert.assertThat(new FibonacciAll().fib(n), is(equalTo(new FibonacciSwap().fib(n))));
+      MatcherAssert.assertThat(new FibonacciAll().fib(n), is(equalTo(new FibonacciIncremental().fib(n))));
+      MatcherAssert.assertThat(new FibonacciAll().fib(n), is(equalTo(new FibonacciSwap().fib(n))));
     }
   }
 }

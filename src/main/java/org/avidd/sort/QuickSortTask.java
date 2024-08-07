@@ -12,8 +12,8 @@ class QuickSortTask extends RecursiveTask<Object[]> {
   private final int threshold;
   private final int l;
   private final int r;
-  private final Object[] a;
-  private final Comparator<Object> comparator;
+  private transient final Object[] a;
+  private transient final Comparator<Object> comparator;
 
   <T> QuickSortTask(T[] aArray, int aL, int aR, Comparator<T> aComparator, int aThreshold) {
     a = aArray;

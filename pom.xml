@@ -1,542 +1,566 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.avidd</groupId>
-    <artifactId>alg-java</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+  <groupId>org.avidd</groupId>
+  <artifactId>alg-java</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
 
-    <name>alg-java</name>
-    <url>http://maven.apache.org</url>
+  <name>alg-java</name>
+  <url>http://maven.apache.org</url>
 
-    <properties>
-        <compileSource>19</compileSource>
-        <targetJdk>19</targetJdk>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- <project.build.sourceEncoding>Cp1252</project.build.sourceEncoding> -->
-        <annotationProcessorOutputDir>target/generated-sources</annotationProcessorOutputDir>
+  <properties>
+    <compileSource>19</compileSource>
+    <targetJdk>19</targetJdk>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- <project.build.sourceEncoding>Cp1252</project.build.sourceEncoding> -->
+    <annotationProcessorOutputDir>target/generated-sources</annotationProcessorOutputDir>
 
-        <spring-version>3.2.3.RELEASE</spring-version>
-    </properties>
+    <spring-version>3.2.3.RELEASE</spring-version>
+  </properties>
 
 
-    <dependencies>
-        <!-- <dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjrt</artifactId> 
-        <version>1.7.2</version> </dependency> <dependency> <groupId>org.aspectj</groupId> 
-        <artifactId>aspectjweaver</artifactId> <version>1.7.2</version> </dependency> -->
-        <!-- 
-        <dependency> <groupId>net.sf.ehcache</groupId> 
-        <artifactId>ehcache-core</artifactId> <version>2.5.2</version> </dependency> 
-        <dependency> <groupId>c3p0</groupId> <artifactId>c3p0</artifactId> <version>0.9.1.2</version> 
-        </dependency> -->
+  <dependencies>
+    <!-- <dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjrt</artifactId> 
+    <version>1.7.2</version> </dependency> <dependency> <groupId>org.aspectj</groupId> 
+    <artifactId>aspectjweaver</artifactId> <version>1.7.2</version> </dependency> -->
+    <!-- 
+    <dependency> <groupId>net.sf.ehcache</groupId> 
+    <artifactId>ehcache-core</artifactId> <version>2.5.2</version> </dependency> 
+    <dependency> <groupId>c3p0</groupId> <artifactId>c3p0</artifactId> <version>0.9.1.2</version> 
+    </dependency> -->
 
-        <!-- END OF LOG4J DEPENDENCIES -->
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>2.0-rc1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>2.0-rc1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-core</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-            <version>2.2.2</version>
-        </dependency>
-        <!-- END OF LOG4J DEPENDENCIES -->
+    <!-- END OF LOG4J DEPENDENCIES -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>2.0-rc1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>2.0-rc1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.2.2</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.2.2</version>
+    </dependency>
+    <!-- END OF LOG4J DEPENDENCIES -->
 		
-        <!-- TEST SCOPE DEPENDENCIES -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.11</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.9.0</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- END OF TEST SCOPE DEPENDENCIES -->
-    </dependencies>
+    <!-- TEST SCOPE DEPENDENCIES -->
+    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.11.0-RC1</version>
+      <scope>test</scope>
+    </dependency>
 
-    <!-- START OF BUILD SECTION -->
-    <!-- Includes definition of additional plugins to run during certain phases. -->
-    <build>
-        <!-- filter the xml configuration files to replace class names according 
-        to properties -->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/test/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
+    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params -->
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <version>5.11.0-RC1</version>
+      <scope>test</scope>
+    </dependency>
 
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${compileSource}</source>
-                    <target>${compileSource}</target>
-                    <complianceLevel>${compileSource}</complianceLevel>
-                    <showWarnings>true</showWarnings>
-                    <showDeprecation>true</showDeprecation>
-                    <compilerArgument>-Xlint:all</compilerArgument>
-                </configuration>
-            </plugin>
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest</artifactId>
+      <version>3.0</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.junit.platform</groupId>
+      <artifactId>junit-platform-suite</artifactId>
+      <version>1.9.1</version>
+      <scope>test></scope>
+    </dependency>
 
-            <!-- compute test coverage -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-            </plugin>
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-all</artifactId>
+      <version>1.9.0</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- END OF TEST SCOPE DEPENDENCIES -->
+  </dependencies>
 
-            <!-- create a jar with classifier -test -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>test-jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+  <!-- START OF BUILD SECTION -->
+  <!-- Includes definition of additional plugins to run during certain phases. -->
+  <build>
+    <!-- filter the xml configuration files to replace class names according 
+    to properties -->
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+      <resource>
+        <directory>src/test/resources</directory>
+        <filtering>true</filtering>
+      </resource>
+    </resources>
 
-            <!-- disable CBC protection as it is buggy in JRE 1.6 U28-U30 -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <forkMode>once</forkMode>
-                    <argLine>-Djava.library.path=${project.build.directory}/lib
-                        -Djsse.enableCBCProtection=false</argLine>
-                    <systemPropertyVariables>
-                        <java.library.path>${project.build.directory}/lib</java.library.path>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>${compileSource}</source>
+          <target>${compileSource}</target>
+          <complianceLevel>${compileSource}</complianceLevel>
+          <showWarnings>true</showWarnings>
+          <showDeprecation>true</showDeprecation>
+          <compilerArgument>-Xlint:all</compilerArgument>
+        </configuration>
+      </plugin>
 
-            <!-- the build-helper plugin is included to deal with the missing annotation 
-            processor configurator -->
-            <!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>build-helper-maven-plugin</artifactId> 
-            <version>1.7</version> <executions> <execution> <id>add-source</id> <phase>generate-sources</phase> 
-            <goals> <goal>add-source</goal> </goals> <configuration> <sources> <source>${annotationProcessorOutputDir}</source> 
-            </sources> </configuration> </execution> </executions> </plugin> -->
-            <!-- the clean plugin must also clean the annotation processor output -->
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>2.4.1</version>
-                <configuration>
-                    <filesets>
-                        <fileset>
-                            <directory>${annotationProcessorOutputDir}</directory>
-                            <includes>
-                                <include>**/*</include>
-                            </includes>
-                        </fileset>
-                    </filesets>
-                </configuration>
-            </plugin>
+      <!-- compute test coverage -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+      </plugin>
 
-        </plugins>
+      <!-- create a jar with classifier -test -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
 
-        <pluginManagement>
-            <plugins>
-                <plugin>
+      <!-- disable CBC protection as it is buggy in JRE 1.6 U28-U30 -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <forkMode>once</forkMode>
+          <argLine>-Djava.library.path=${project.build.directory}/lib
+            -Djsse.enableCBCProtection=false</argLine>
+          <systemPropertyVariables>
+            <java.library.path>${project.build.directory}/lib</java.library.path>
+          </systemPropertyVariables>
+        </configuration>
+      </plugin>
+
+      <!-- the build-helper plugin is included to deal with the missing annotation 
+      processor configurator -->
+      <!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>build-helper-maven-plugin</artifactId> 
+      <version>1.7</version> <executions> <execution> <id>add-source</id> <phase>generate-sources</phase> 
+      <goals> <goal>add-source</goal> </goals> <configuration> <sources> <source>${annotationProcessorOutputDir}</source> 
+      </sources> </configuration> </execution> </executions> </plugin> -->
+      <!-- the clean plugin must also clean the annotation processor output -->
+      <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.4.1</version>
+        <configuration>
+          <filesets>
+            <fileset>
+              <directory>${annotationProcessorOutputDir}</directory>
+              <includes>
+                <include>**/*</include>
+              </includes>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>1.4</version>
+          <configuration>
+            <useMissingFile>false</useMissingFile>
+            <licenseMerges>
+              <licenseMerge>The Apache Software License, Version 2.0|Apache
+                License, Version 2.0|apache_v2</licenseMerge>
+              <licenseMerge>COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL)
+                Version 1.0|Common Development and Distribution License (CDDL)
+                v1.0|cddl_v1</licenseMerge>
+              <licenseMerge>GNU Lesser General Public License (LGPL), Version
+                2.1|GNU Lesser General Public License, version 2.1|lgpl_v2_1</licenseMerge>
+              <licenseMerge>GNU LESSER GENERAL PUBLIC LICENSE, Version 3|GNU
+                Lesser General Public Licence|GNU Lesser General Public
+                License|GNU LESSER GENERAL PUBLIC LICENSE</licenseMerge>
+              <licenseMerge>Dual license consisting of the CDDL v1.0 and GPL
+                v2|CDDL+GPLv2|CDDL+GPL|CDDL+GPL License</licenseMerge>
+              <licenseMerge>Dual license consisting of the CDDL v1.1 and GPL
+                v2|CDDL1_1+GPLv2</licenseMerge>
+              <licenseMerge>Dual License: CDDL 1.0 and GPL V2 with Classpath
+                Exception|CDDL + GPLv2 with classpath exception</licenseMerge>
+            </licenseMerges>
+          </configuration>
+          <executions>
+            <!-- <execution> <id>download-licenses</id> <phase>process-resources</phase> 
+            <goals> <goal>download-licenses</goal> </goals> </execution> <execution> 
+            <id>add-third-party</id> <phase>process-resources</phase> <goals> <goal>aggregate-add-third-party</goal> 
+            </goals> </execution> -->
+          </executions>
+        </plugin>
+
+        <!-- Project lifecycle mapping. -->
+        <plugin>
+          <groupId>org.eclipse.m2e</groupId>
+          <artifactId>lifecycle-mapping</artifactId>
+          <version>1.0.0</version>
+          <configuration>
+            <lifecycleMappingMetadata>
+              <pluginExecutions>
+                <pluginExecution>
+                  <!-- org.bsc.maven:maven-processor-plugin:2.0.4:process (execution: 
+                  process, phase: generate-sources) -->
+                  <pluginExecutionFilter>
+                    <groupId>org.bsc.maven</groupId>
+                    <artifactId>maven-processor-plugin</artifactId>
+                    <versionRange>[2.0.4,)</versionRange>
+                    <goals>
+                      <goal>process</goal>
+                      <goal>process-test</goal>
+                      <goal>compile</goal>
+                      <goal>test-compile</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute>
+                      <runOnIncremental>true</runOnIncremental>
+                    </execute>
+                  </action>
+                </pluginExecution>
+
+                <!-- org.codehaus.mojo:license-maven-plugin:1.3:add-third-party (execution: 
+                download-licenses, phase: generate-resources) -->
+                <pluginExecution>
+                  <pluginExecutionFilter>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>license-maven-plugin</artifactId>
-                    <version>1.4</version>
-                    <configuration>
-                        <useMissingFile>false</useMissingFile>
-                        <licenseMerges>
-                            <licenseMerge>The Apache Software License, Version 2.0|Apache
-                                License, Version 2.0|apache_v2</licenseMerge>
-                            <licenseMerge>COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL)
-                                Version 1.0|Common Development and Distribution License (CDDL)
-                                v1.0|cddl_v1</licenseMerge>
-                            <licenseMerge>GNU Lesser General Public License (LGPL), Version
-                                2.1|GNU Lesser General Public License, version 2.1|lgpl_v2_1</licenseMerge>
-                            <licenseMerge>GNU LESSER GENERAL PUBLIC LICENSE, Version 3|GNU
-                                Lesser General Public Licence|GNU Lesser General Public
-                                License|GNU LESSER GENERAL PUBLIC LICENSE</licenseMerge>
-                            <licenseMerge>Dual license consisting of the CDDL v1.0 and GPL
-                                v2|CDDL+GPLv2|CDDL+GPL|CDDL+GPL License</licenseMerge>
-                            <licenseMerge>Dual license consisting of the CDDL v1.1 and GPL
-                                v2|CDDL1_1+GPLv2</licenseMerge>
-                            <licenseMerge>Dual License: CDDL 1.0 and GPL V2 with Classpath
-                                Exception|CDDL + GPLv2 with classpath exception</licenseMerge>
-                        </licenseMerges>
-                    </configuration>
-                    <executions>
-                        <!-- <execution> <id>download-licenses</id> <phase>process-resources</phase> 
-                        <goals> <goal>download-licenses</goal> </goals> </execution> <execution> 
-                        <id>add-third-party</id> <phase>process-resources</phase> <goals> <goal>aggregate-add-third-party</goal> 
-                        </goals> </execution> -->
-                    </executions>
-                </plugin>
+                    <versionRange>[1.4,)</versionRange>
+                    <goals>
+                      <goal>download-licenses</goal>
+                      <goal>aggregate-add-third-party</goal>
+                    </goals>
+                  </pluginExecutionFilter>
+                  <action>
+                    <execute>
+                      <runOnIncremental>true</runOnIncremental>
+                    </execute>
+                  </action>
+                </pluginExecution>
+              </pluginExecutions>
+            </lifecycleMappingMetadata>
+          </configuration>
+        </plugin>
 
-                <!-- Project lifecycle mapping. -->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <!-- org.bsc.maven:maven-processor-plugin:2.0.4:process (execution: 
-                                    process, phase: generate-sources) -->
-                                    <pluginExecutionFilter>
-                                        <groupId>org.bsc.maven</groupId>
-                                        <artifactId>maven-processor-plugin</artifactId>
-                                        <versionRange>[2.0.4,)</versionRange>
-                                        <goals>
-                                            <goal>process</goal>
-                                            <goal>process-test</goal>
-                                            <goal>compile</goal>
-                                            <goal>test-compile</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute>
-                                            <runOnIncremental>true</runOnIncremental>
-                                        </execute>
-                                    </action>
-                                </pluginExecution>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>2.9</version>
+          <configuration>
+            <additionnalDependencies>
+              <additionnalDependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.1</version>
+              </additionnalDependency>
+              <additionnalDependency>
+                <groupId>org.dbunit</groupId>
+                <artifactId>dbunit</artifactId>
+                <version>2.4.8-modified</version>
+              </additionnalDependency>
+              <additionnalDependency>
+                <groupId>org.hamcrest</groupId>
+                <artifactId>hamcrest</artifactId>
+                <version>3.0</version>
+              </additionnalDependency>
+              <additionnalDependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>4.3.0.Final</version>
+              </additionnalDependency>
+            </additionnalDependencies>
+          </configuration>
+        </plugin>
 
-                                <!-- org.codehaus.mojo:license-maven-plugin:1.3:add-third-party (execution: 
-                                download-licenses, phase: generate-resources) -->
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>license-maven-plugin</artifactId>
-                                        <versionRange>[1.4,)</versionRange>
-                                        <goals>
-                                            <goal>download-licenses</goal>
-                                            <goal>aggregate-add-third-party</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute>
-                                            <runOnIncremental>true</runOnIncremental>
-                                        </execute>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.11</version>
+          <configuration>
+            <testFailureIgnore>true</testFailureIgnore>
+          </configuration>
+        </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.9</version>
-                    <configuration>
-                        <additionnalDependencies>
-                            <additionnalDependency>
-                                <groupId>junit</groupId>
-                                <artifactId>junit</artifactId>
-                                <version>4.8.1</version>
-                            </additionnalDependency>
-                            <additionnalDependency>
-                                <groupId>org.dbunit</groupId>
-                                <artifactId>dbunit</artifactId>
-                                <version>2.4.8-modified</version>
-                            </additionnalDependency>
-                            <additionnalDependency>
-                                <groupId>org.hamcrest</groupId>
-                                <artifactId>hamcrest-all</artifactId>
-                                <version>1.3.0RC2</version>
-                            </additionnalDependency>
-                            <additionnalDependency>
-                                <groupId>org.hibernate</groupId>
-                                <artifactId>hibernate-validator</artifactId>
-                                <version>4.3.0.Final</version>
-                            </additionnalDependency>
-                        </additionnalDependencies>
-                    </configuration>
-                </plugin>
+        <!-- Configure the jar plugin to include each project's classpath into 
+        the manifest. -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.3.1</version>
+          <configuration>
+            <archive>
+              <manifest>
+                <addClasspath>true</addClasspath>
+              </manifest>
+            </archive>
+          </configuration>
+        </plugin>
 
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.11</version>
-                    <configuration>
-                        <testFailureIgnore>true</testFailureIgnore>
-                    </configuration>
-                </plugin>
+        <!-- cobertura test coverage -->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>cobertura-maven-plugin</artifactId>
+          <version>2.4</version>
+          <configuration>
+            <instrumentation>
+              <ignores>
+                <ignore>com.example.boringcode.*</ignore>
+              </ignores>
+              <excludes>
+                <exclude>com/example/dullcode/**/*.class</exclude>
+                <exclude>com/example/**/*Test.class</exclude>
+              </excludes>
+            </instrumentation>
+          </configuration>
+          <executions>
+            <execution>
+              <goals>
+                <goal>clean</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
 
-                <!-- Configure the jar plugin to include each project's classpath into 
-                the manifest. -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.3.1</version>
-                    <configuration>
-                        <archive>
-                            <manifest>
-                                <addClasspath>true</addClasspath>
-                            </manifest>
-                        </archive>
-                    </configuration>
-                </plugin>
+        <!-- build the maven site -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-site-plugin</artifactId>
+          <version>3.2</version>
+          <executions>
+            <execution>
+              <id>attach-descriptor</id>
+              <goals>
+                <goal>attach-descriptor</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
 
-                <!-- cobertura test coverage -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>cobertura-maven-plugin</artifactId>
-                    <version>2.4</version>
-                    <configuration>
-                        <instrumentation>
-                            <ignores>
-                                <ignore>com.example.boringcode.*</ignore>
-                            </ignores>
-                            <excludes>
-                                <exclude>com/example/dullcode/**/*.class</exclude>
-                                <exclude>com/example/**/*Test.class</exclude>
-                            </excludes>
-                        </instrumentation>
-                    </configuration>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>clean</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+        <!-- compile -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+          <configuration>
+            <source>${compileSource}</source>
+            <target>${compileSource}</target>
+            <complianceLevel>${compileSource}</complianceLevel>
 
-                <!-- build the maven site -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.2</version>
-                    <executions>
-                        <execution>
-                            <id>attach-descriptor</id>
-                            <goals>
-                                <goal>attach-descriptor</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                </plugin>
+            <showWarnings>true</showWarnings>
+            <showDeprecation>true</showDeprecation>
+            <compilerArgument>-Xlint:all</compilerArgument>
+          </configuration>
+        </plugin>
 
-                <!-- compile -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.3.2</version>
-                    <configuration>
-                        <source>${compileSource}</source>
-                        <target>${compileSource}</target>
-                        <complianceLevel>${compileSource}</complianceLevel>
+        <!-- create project reports -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-project-info-reports-plugin</artifactId>
+          <version>2.4</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.2.2</version>
+          <configuration>
+            <descriptors>
+              <descriptor>assembly-bin.xml</descriptor>
+            </descriptors>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-report-plugin</artifactId>
+          <version>2.11</version>
+        </plugin>
 
-                        <showWarnings>true</showWarnings>
-                        <showDeprecation>true</showDeprecation>
-                        <compilerArgument>-Xlint:all</compilerArgument>
-                    </configuration>
-                </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
-                <!-- create project reports -->
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>2.4</version>
-                </plugin>
-                <plugin>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <version>2.2.2</version>
-                    <configuration>
-                        <descriptors>
-                            <descriptor>assembly-bin.xml</descriptor>
-                        </descriptors>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>2.11</version>
-                </plugin>
+  <reporting>
+    <plugins>
 
-            </plugins>
-        </pluginManagement>
-    </build>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>l10n-maven-plugin</artifactId>
+        <version>1.0-alpha-2</version>
+        <configuration>
+          <locales>
+            <locale>en</locale>
+            <locale>de</locale>
+            <locale>es</locale>
+            <locale>fr</locale>
+          </locales>
+        </configuration>
+      </plugin>
 
-    <reporting>
-        <plugins>
+      <!-- JUnit report. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.8</version>
+      </plugin>
 
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>l10n-maven-plugin</artifactId>
-                <version>1.0-alpha-2</version>
-                <configuration>
-                    <locales>
-                        <locale>en</locale>
-                        <locale>de</locale>
-                        <locale>es</locale>
-                        <locale>fr</locale>
-                    </locales>
-                </configuration>
-            </plugin>
+      <!-- CHANGELOG -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <type>range</type>
+          <range>9999</range>
+        </configuration>
+      </plugin>
 
-            <!-- JUnit report. -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-report-plugin</artifactId>
-                <version>2.8</version>
-            </plugin>
+      <!-- JAVADOC -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <show>protected</show>
+          <detectLinks>false</detectLinks>
+          <detectOfflineLinks>true</detectOfflineLinks>
+          <links>
+            <link>http://commons.apache.org/dbcp/apidocs/</link>
+            <link>http://commons.apache.org/fileupload/apidocs/</link>
+            <link>http://www.eclipse.org/aspectj/doc/released/runtime-api/</link>
+            <link>http://www.eclipse.org/aspectj/doc/released/weaver-api/</link>
+            <link>http://mockito.googlecode.com/svn/branches/1.5/javadoc</link>
+            <link>http://www.eclipse.org/aspectj/doc/next/runtime-api/</link>
+            <link>http://static.springsource.org/spring-security/site/docs/3.1.x/apidocs/</link>
+            <link>http://docs.guava-libraries.googlecode.com/git-history/v12.0/javadoc/</link>
+          </links>
+          <!-- fixes a classpath problem with test-javadoc goal in JDK 1.6 (fix 
+          is unnecessary in 1.7) -->
+          <additionnalDependencies>
+            <additionnalDependency>
+              <groupId>junit</groupId>
+              <artifactId>junit</artifactId>
+              <version>4.8.1</version>
+            </additionnalDependency>
+            <additionnalDependency>
+              <groupId>org.hamcrest</groupId>
+              <artifactId>hamcrest</artifactId>
+              <version>3.0</version>
+            </additionnalDependency>
+            <additionnalDependency>
+              <groupId>org.hibernate</groupId>
+              <artifactId>hibernate-validator</artifactId>
+              <version>4.3.0.Final</version>
+            </additionnalDependency>
+          </additionnalDependencies>
+        </configuration>
+      </plugin>
 
-            <!-- CHANGELOG -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-changelog-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <type>range</type>
-                    <range>9999</range>
-                </configuration>
-            </plugin>
+      <!-- JXR REPORT: Source cross references. Also used by PMD. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
 
-            <!-- JAVADOC -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <show>protected</show>
-                    <detectLinks>false</detectLinks>
-                    <detectOfflineLinks>true</detectOfflineLinks>
-                    <links>
-                        <link>http://commons.apache.org/dbcp/apidocs/</link>
-                        <link>http://commons.apache.org/fileupload/apidocs/</link>
-                        <link>http://www.eclipse.org/aspectj/doc/released/runtime-api/</link>
-                        <link>http://www.eclipse.org/aspectj/doc/released/weaver-api/</link>
-                        <link>http://mockito.googlecode.com/svn/branches/1.5/javadoc</link>
-                        <link>http://www.eclipse.org/aspectj/doc/next/runtime-api/</link>
-                        <link>http://static.springsource.org/spring-security/site/docs/3.1.x/apidocs/</link>
-                        <link>http://docs.guava-libraries.googlecode.com/git-history/v12.0/javadoc/</link>
-                    </links>
-                    <!-- fixes a classpath problem with test-javadoc goal in JDK 1.6 (fix 
-                    is unnecessary in 1.7) -->
-                    <additionnalDependencies>
-                        <additionnalDependency>
-                            <groupId>junit</groupId>
-                            <artifactId>junit</artifactId>
-                            <version>4.8.1</version>
-                        </additionnalDependency>
-                        <additionnalDependency>
-                            <groupId>org.hamcrest</groupId>
-                            <artifactId>hamcrest-all</artifactId>
-                            <version>1.3.0RC2</version>
-                        </additionnalDependency>
-                        <additionnalDependency>
-                            <groupId>org.hibernate</groupId>
-                            <artifactId>hibernate-validator</artifactId>
-                            <version>4.3.0.Final</version>
-                        </additionnalDependency>
-                    </additionnalDependencies>
-                </configuration>
-            </plugin>
+      <!-- PMD REPORT: Checking for potential programming problems. -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+          <linkXref>true</linkXref>
+          <minimumTokens>100</minimumTokens>
+          <targetJdk>${compileSource}</targetJdk>
+        </configuration>
+      </plugin>
 
-            <!-- JXR REPORT: Source cross references. Also used by PMD. -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jxr-plugin</artifactId>
-                <version>2.2</version>
-            </plugin>
+      <!-- COBERTURA REPORT: Unit test coverage. -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>cobertura-maven-plugin</artifactId>
+        <version>2.4</version>
+      </plugin>
 
-            <!-- PMD REPORT: Checking for potential programming problems. -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <linkXref>true</linkXref>
-                    <minimumTokens>100</minimumTokens>
-                    <targetJdk>${compileSource}</targetJdk>
-                </configuration>
-            </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.3.2</version>
+      </plugin>
+    </plugins>
+  </reporting>
 
-            <!-- COBERTURA REPORT: Unit test coverage. -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>cobertura-maven-plugin</artifactId>
-                <version>2.4</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.3.2</version>
-            </plugin>
-        </plugins>
-    </reporting>
-
-    <profiles>
-        <profile>
-            <id>win32</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                    <arch>x86</arch>
-                </os>
-            </activation>
-            <properties>
-                <build.type>win32</build.type>
-            </properties>
-        </profile>
-        <profile>
-            <id>x64</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                    <arch>x86_64</arch>
-                </os>
-            </activation>
-            <properties>
-                <build.type>x64</build.type>
-            </properties>
-        </profile>
-        <profile>
-            <id>lin32</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <build.type>lin32</build.type>
-            </properties>
-        </profile>
-        <profile>
-            <id>lin64</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <build.type>lin64</build.type>
-            </properties>
-        </profile>
-    </profiles>
+  <profiles>
+    <profile>
+      <id>win32</id>
+      <activation>
+        <os>
+          <family>windows</family>
+          <arch>x86</arch>
+        </os>
+      </activation>
+      <properties>
+        <build.type>win32</build.type>
+      </properties>
+    </profile>
+    <profile>
+      <id>x64</id>
+      <activation>
+        <os>
+          <family>windows</family>
+          <arch>x86_64</arch>
+        </os>
+      </activation>
+      <properties>
+        <build.type>x64</build.type>
+      </properties>
+    </profile>
+    <profile>
+      <id>lin32</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <build.type>lin32</build.type>
+      </properties>
+    </profile>
+    <profile>
+      <id>lin64</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <build.type>lin64</build.type>
+      </properties>
+    </profile>
+  </profiles>
 
 </project>

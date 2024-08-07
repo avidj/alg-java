@@ -9,8 +9,8 @@ import java.util.List;
 
 import org.avidd.graph.directed.Digraph;
 import org.avidd.graph.directed.TopologicalSort;
-import org.junit.Assert;
-import org.junit.Test;
+import org.hamcrest.MatcherAssert;
+import org.junit.jupiter.api.Test;
 
 public abstract class TopologicalSortTest {
 
@@ -20,31 +20,31 @@ public abstract class TopologicalSortTest {
         .edge(3, 4).edge(3, 5).edge(3, 6).edge(5, 2).edge(6, 4);
     TopologicalSort ts = createTopologicalSort(graph);
     System.out.println(join(", ", ts.getTopologicalOrder()));
-    Assert.assertThat(ts.getTopologicalOrder(), is(equalTo(Arrays.asList(3, 6, 0, 5, 2, 1, 4))));
+    MatcherAssert.assertThat(ts.getTopologicalOrder(), is(equalTo(Arrays.asList(3, 6, 0, 5, 2, 1, 4))));
   }
 
   @Test
   public final void testCycle1() {
     final Digraph graph = new Digraph().edge(0, 0);
     TopologicalSort ts = createTopologicalSort(graph);
-    Assert.assertThat(ts.hasCycle(), is(true));
-    Assert.assertThat(ts.getCycle(), is(equalTo(Arrays.asList(0, 0))));
+    MatcherAssert.assertThat(ts.hasCycle(), is(true));
+    MatcherAssert.assertThat(ts.getCycle(), is(equalTo(Arrays.asList(0, 0))));
   }
 
   @Test
   public final void testCycle2() {
     final Digraph graph = new Digraph().edge(0, 1).edge(1, 0);
     TopologicalSort ts = createTopologicalSort(graph);
-    Assert.assertThat(ts.hasCycle(), is(true));
-    Assert.assertThat(ts.getCycle(), is(equalTo(Arrays.asList(1, 0, 1))));
+    MatcherAssert.assertThat(ts.hasCycle(), is(true));
+    MatcherAssert.assertThat(ts.getCycle(), is(equalTo(Arrays.asList(1, 0, 1))));
   }
 
   @Test
   public final void testCycle3() {
     final Digraph graph = new Digraph().edge(0, 1).edge(1, 2).edge(2, 0);
     TopologicalSort ts = createTopologicalSort(graph);
-    Assert.assertThat(ts.hasCycle(), is(true));
-    Assert.assertThat(ts.getCycle(), is(equalTo(Arrays.asList(2, 0, 1, 2))));
+    MatcherAssert.assertThat(ts.hasCycle(), is(true));
+    MatcherAssert.assertThat(ts.getCycle(), is(equalTo(Arrays.asList(2, 0, 1, 2))));
   }
 
   private static String join(String delim, List<?> elements) {

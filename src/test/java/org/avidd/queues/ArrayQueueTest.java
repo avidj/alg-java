@@ -3,8 +3,8 @@ package org.avidd.queues;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.equalTo;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.hamcrest.MatcherAssert;
+import org.junit.jupiter.api.Test;
 
 public class ArrayQueueTest {
 
@@ -12,52 +12,52 @@ public class ArrayQueueTest {
   public void testResize() {
     Queue<Integer> q = new ArrayQueue<>(2);
     q.enqueue(1);
-    Assert.assertThat(q.size(), is(equalTo(1)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.size(), is(equalTo(1)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
     q.enqueue(2);
-    Assert.assertThat(q.size(), is(equalTo(2)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.size(), is(equalTo(2)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
     q.enqueue(3);
-    Assert.assertThat(q.size(), is(equalTo(3)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.size(), is(equalTo(3)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
     q.enqueue(4);
-    Assert.assertThat(q.size(), is(equalTo(4)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.size(), is(equalTo(4)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
-    Assert.assertThat(q.dequeue(), is(equalTo(1)));
-    Assert.assertThat(q.size(), is(equalTo(3)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.dequeue(), is(equalTo(1)));
+    MatcherAssert.assertThat(q.size(), is(equalTo(3)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
-    Assert.assertThat(q.dequeue(), is(equalTo(2)));
-    Assert.assertThat(q.size(), is(equalTo(2)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.dequeue(), is(equalTo(2)));
+    MatcherAssert.assertThat(q.size(), is(equalTo(2)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
-    Assert.assertThat(q.dequeue(), is(equalTo(3)));
-    Assert.assertThat(q.size(), is(equalTo(1)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.dequeue(), is(equalTo(3)));
+    MatcherAssert.assertThat(q.size(), is(equalTo(1)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
     q.enqueue(5);
-    Assert.assertThat(q.size(), is(equalTo(2)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.size(), is(equalTo(2)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
     q.enqueue(6);
-    Assert.assertThat(q.size(), is(equalTo(3)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.size(), is(equalTo(3)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
-    Assert.assertThat(q.dequeue(), is(equalTo(4)));
-    Assert.assertThat(q.size(), is(equalTo(2)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.dequeue(), is(equalTo(4)));
+    MatcherAssert.assertThat(q.size(), is(equalTo(2)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
-    Assert.assertThat(q.dequeue(), is(equalTo(5)));
-    Assert.assertThat(q.size(), is(equalTo(1)));
-    Assert.assertThat(q.isEmpty(), is(false));
+    MatcherAssert.assertThat(q.dequeue(), is(equalTo(5)));
+    MatcherAssert.assertThat(q.size(), is(equalTo(1)));
+    MatcherAssert.assertThat(q.isEmpty(), is(false));
 
-    Assert.assertThat(q.dequeue(), is(equalTo(6)));
-    Assert.assertThat(q.size(), is(equalTo(0)));
-    Assert.assertThat(q.isEmpty(), is(true));
+    MatcherAssert.assertThat(q.dequeue(), is(equalTo(6)));
+    MatcherAssert.assertThat(q.size(), is(equalTo(0)));
+    MatcherAssert.assertThat(q.isEmpty(), is(true));
   }
 
 }

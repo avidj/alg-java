@@ -3,28 +3,29 @@ package org.avidd.maps;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+import org.hamcrest.MatcherAssert;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 public class HashValueTest {
 
   @Test
   public void testOverflow() {
     // There is one more value before 0 than after.
-    Assert.assertThat(Math.abs(Integer.MIN_VALUE), is(equalTo(Integer.MIN_VALUE)));
+    MatcherAssert.assertThat(Math.abs(Integer.MIN_VALUE), is(equalTo(Integer.MIN_VALUE)));
     // This is the correct way to compute the hash value.
-    Assert.assertThat(Math.abs(Integer.MIN_VALUE & Integer.MAX_VALUE), is(equalTo(0)));
+    MatcherAssert.assertThat(Math.abs(Integer.MIN_VALUE & Integer.MAX_VALUE), is(equalTo(0)));
   }
 
   @Test
   public void testAlgorithmComplexityAttackComponents() {
     int aaHash = "Aa".hashCode();
     int bbHash = "BB".hashCode();
-    Assert.assertThat(aaHash, is(equalTo(bbHash)));
+    MatcherAssert.assertThat(aaHash, is(equalTo(bbHash)));
   }
 
   @Test
@@ -47,7 +48,7 @@ public class HashValueTest {
     algorithmicComplexityAttack(10000);
   }
 
-  @Ignore
+  @Disabled
   @Test
   public void testAlgorithmicComplexityAttack100000() {
     algorithmicComplexityAttack(100000);

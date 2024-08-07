@@ -1,8 +1,8 @@
 package org.avidd.maps;
 
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 
-@Ignore // not yet implemented
+@Disabled // not yet implemented
 public class PatriciaTreeTest extends CharSeqMapTest {
   @Override
   PatriciaTree<Integer> newSymbolTable() {

@@ -10,7 +10,7 @@ public class FibTask extends RecursiveTask<BigInteger> {
   private static final int sequentialThreshold = 10;
   private volatile int number;
 
-  private final Fibonacci fib;
+  private transient final Fibonacci fib;
   
   FibTask(Fibonacci fib, int n) {
     this.fib = fib;

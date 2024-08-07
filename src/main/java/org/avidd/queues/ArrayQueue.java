@@ -57,10 +57,5 @@ public class ArrayQueue<T> implements Queue<T> {
   @Override
   public int size() {
     return ( items.length + tail - head ) % items.length;
-    // if ( tail < head ) {
-    // return tail + items.length - head;
-    // } else {
-    // return tail - head;
-    // }
   }
 }

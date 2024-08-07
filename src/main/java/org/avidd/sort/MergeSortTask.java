@@ -11,7 +11,7 @@ import java.util.concurrent.RecursiveTask;
 class MergeSortTask extends RecursiveTask<Object[]> {
   private static final long serialVersionUID = 1L;
   private final int threshold;
-  private final Comparator<Object> comparator;
+  private transient final Comparator<Object> comparator;
   private final Object[] a;
   private final int l;
   private final int r;

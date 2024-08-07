@@ -68,12 +68,12 @@ public class MaxHeap<T> implements PriorityQueue<T> {
   private void sink(int k) {
     while ( 2 * k <= size ) { // until end of heap is reached
       int j = 2 * k; // j is the first son of k
-      if ( j < size && less(j, j + 1) ) {
+      if ( j < size && less(j, j + 1) ) { // choose the largest son
         j++;
-      } // if j is not last element choose largest son
-      if ( !less(k, j) ) {
+      } 
+      if ( !less(k, j) ) { // stop if k is not smaller than its largest son
         break;
-      } // stop if k is not smaller than its largest son
+      } 
       swap(heap, k, j); // else swap k with its largest son
       k = j; // and continue sinking at that position
     }

@@ -1,9 +1,9 @@
 package org.avidd.maps;
 
 import org.avidd.util.ComparableComparator;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 
-@Ignore //not implemented
+@Disabled //not implemented
 public class RedBlackBstTest extends SymbolTableTest<LLRedBlackBst<String, Integer>> {
 
   @Override

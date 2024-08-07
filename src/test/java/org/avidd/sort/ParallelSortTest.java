@@ -1,6 +1,6 @@
 package org.avidd.sort;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public abstract class ParallelSortTest {
 

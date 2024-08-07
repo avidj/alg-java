@@ -1,6 +1,6 @@
 package org.avidd.graph;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 // TODO: test paths (they were reversed!)
 public class DfsTest {

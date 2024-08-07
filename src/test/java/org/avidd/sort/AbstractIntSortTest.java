@@ -1,7 +1,7 @@
 package org.avidd.sort;
 
 import static org.avidd.sort.SortUtil.assertSorted;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public abstract class AbstractIntSortTest {
 

@@ -2,8 +2,8 @@ package org.avidd.unionfind;
 
 import static org.hamcrest.CoreMatchers.is;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.hamcrest.MatcherAssert;
+import org.junit.jupiter.api.Test;
 
 public abstract class UnionFindTest {
 
@@ -24,8 +24,8 @@ public abstract class UnionFindTest {
     uf.union(2, 1);
     System.out.println(uf.toString());
 
-    Assert.assertThat(uf.connected(0, 7), is(false));
-    Assert.assertThat(uf.connected(8, 9), is(true));
+    MatcherAssert.assertThat(uf.connected(0, 7), is(false));
+    MatcherAssert.assertThat(uf.connected(8, 9), is(true));
 
     uf.union(5, 0);
     System.out.println(uf.toString());
@@ -36,6 +36,6 @@ public abstract class UnionFindTest {
     uf.union(1, 0);
     System.out.println(uf.toString());
 
-    Assert.assertThat(uf.connected(0, 7), is(true));
+    MatcherAssert.assertThat(uf.connected(0, 7), is(true));
   }
 }

@@ -2,9 +2,9 @@ package org.avidd.math.concurrent;
 
 import org.avidd.math.Fibonacci;
 import org.avidd.math.FibonacciNaive;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
 
-@Ignore
+@Disabled
 public class FibonacciNaiveTest extends AbstractFibonacciTest {
   
   @Override

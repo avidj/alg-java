@@ -1,7 +1,7 @@
 package org.avidd.sort;
 
-import org.junit.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
 
 public abstract class AbstractRadixSortTest {
 
@@ -67,7 +67,7 @@ public abstract class AbstractRadixSortTest {
 
   private static void assertSorted(String[] a) {
     for ( int i = 0; i < a.length - 2; i++ ) {
-      Assert.assertTrue(a[i].compareTo(a[i + 1]) <= 0);
+      assertTrue(a[i].compareTo(a[i + 1]) <= 0);
     }
   }
 

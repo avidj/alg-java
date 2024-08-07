@@ -3,6 +3,9 @@
 Obviously, this is mainly a list of what you won't find in this repository.
 Check out the sources to see what's there.
 
+### Utils
+* **baseX** encodingx
+
 ### Mining
 * **TODO** Quaternary Search 
 * **TODO** Minhashing

@@ -12,8 +12,11 @@ import java.util.List;
 import java.util.Set;
 
 import org.avidd.sort.UnsortedArrays;
-import org.junit.Assert;
-import org.junit.Test;
+import org.hamcrest.MatcherAssert;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import org.junit.jupiter.api.Test;
 
 public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
   static final List<String> SEA_SHELLS = Arrays.asList("she", "sells", "sea", "shells",
@@ -41,74 +44,74 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
   @Test
   public void testUlysses() {
     SymbolTable<String, Integer> map = newSymbolTable(UnsortedArrays.ulysses());
-    Assert.assertThat(map.keySet().size(), is(equalTo(50107)));
+    MatcherAssert.assertThat(map.keySet().size(), is(equalTo(50107)));
   }
 
   @Test
   public void testLeonardoDaVinci() {
     SymbolTable<String, Integer> map = newSymbolTable(UnsortedArrays.leonardoDaVinci());
-    Assert.assertThat(map.keySet().size(), is(equalTo(23589)));
+    MatcherAssert.assertThat(map.keySet().size(), is(equalTo(23589)));
   }
 
   @Test
   public void testOutlineOfScience() {
     SymbolTable<String, Integer> map = newSymbolTable(UnsortedArrays.outlineOfScience());
-    Assert.assertThat(map.keySet().size(), is(equalTo(18040)));
+    MatcherAssert.assertThat(map.keySet().size(), is(equalTo(18040)));
   }
 
   @Test
   public void testNull() {
     SymbolTable<String, Integer> map = newSymbolTable(SEA_SHELLS);
-    Assert.assertThat(map.contains(NULL_KEY), is(false));
+    MatcherAssert.assertThat(map.contains(NULL_KEY), is(false));
     map.put(NULL_KEY, null);
-    Assert.assertThat(map.contains(NULL_KEY), is(true));
-    Assert.assertThat(map.keySet().size(), is(equalTo(8)));
-    Assert.assertThat(map.get(NULL_KEY), is(equalTo(null)));
+    MatcherAssert.assertThat(map.contains(NULL_KEY), is(true));
+    MatcherAssert.assertThat(map.keySet().size(), is(equalTo(8)));
+    MatcherAssert.assertThat(map.get(NULL_KEY), is(equalTo(null)));
   }
 
   @Test
   public void testNullKey() {
     SymbolTable<String, Integer> map = newSymbolTable(SEA_SHELLS);
-    Assert.assertThat(map.contains(null), is(false));
+    MatcherAssert.assertThat(map.contains(null), is(false));
     map.put(null, null);
-    Assert.assertThat(map.contains(null), is(true));
-    Assert.assertThat(map.keySet().size(), is(equalTo(8)));
-    Assert.assertThat(map.get(null), is(equalTo(null)));
+    MatcherAssert.assertThat(map.contains(null), is(true));
+    MatcherAssert.assertThat(map.keySet().size(), is(equalTo(8)));
+    MatcherAssert.assertThat(map.get(null), is(equalTo(null)));
   }
 
   @Test
   public void testEmptyKeyAfter() {
     List<String> keys = SEA_SHELLS;
     SymbolTable<String, Integer> map = newSymbolTable(keys);
-    Assert.assertThat(map.contains(EMPTY_STRING), is(false));
+    assertThat(map.contains(EMPTY_STRING), is(false));
     map.put(EMPTY_STRING, 100);
-    Assert.assertThat(map.contains(EMPTY_STRING), is(true));
+    assertThat(map.contains(EMPTY_STRING), is(true));
     Collection<String> keySet = map.keySet();
-    Assert.assertThat(keySet.size(), is(equalTo(8)));
-    Assert.assertTrue(keySet.containsAll(keys));
-    Assert.assertTrue(keySet.contains(""));
-    Assert.assertThat(map.get(EMPTY_STRING), is(equalTo(100)));
-    Assert.assertThat(map.get("s"), is(nullValue()));
+    assertThat(keySet.size(), is(equalTo(8)));
+    assertTrue(keySet.containsAll(keys));
+    assertTrue(keySet.contains(""));
+    assertThat(map.get(EMPTY_STRING), is(equalTo(100)));
+    assertThat(map.get("s"), is(nullValue()));
     for ( int i = 0, n = keys.size(); i < n; i++ ) {
-      Assert.assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
+      assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
     }
   }
 
   @Test
   public void testEmptyKeyBefore() {
     SymbolTable<String, Integer> map = newSymbolTable();
-    Assert.assertThat(map.contains(EMPTY_STRING), is(false));
+    assertThat(map.contains(EMPTY_STRING), is(false));
     map.put(EMPTY_STRING, 100);
-    Assert.assertThat(map.contains(EMPTY_STRING), is(true));
+    assertThat(map.contains(EMPTY_STRING), is(true));
     List<String> keys = SEA_SHELLS;
     for ( int i = 0; i < keys.size(); i++ ) {
       map.put(keys.get(i), i);
     }
-    Assert.assertThat(map.keySet().size(), is(equalTo(8)));
-    Assert.assertThat(map.get(EMPTY_STRING), is(equalTo(100)));
-    Assert.assertThat(map.get("s"), is(nullValue()));
+    assertThat(map.keySet().size(), is(equalTo(8)));
+    assertThat(map.get(EMPTY_STRING), is(equalTo(100)));
+    assertThat(map.get("s"), is(nullValue()));
     for ( int i = 0, n = keys.size(); i < n; i++ ) {
-      Assert.assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
+      assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
     }
   }
 
@@ -116,10 +119,10 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
   public void testSeaShellsPut() {
     List<String> keys = SEA_SHELLS;
     SymbolTable<String, Integer> map = newSymbolTable(keys);
-    Assert.assertThat(map.keySet().size(), is(equalTo(7)));
-    Assert.assertThat(map.keySet(), is(equalTo((Set<String>)new HashSet<>(keys))));
+    assertThat(map.keySet().size(), is(equalTo(7)));
+    assertThat(map.keySet(), is(equalTo((Set<String>)new HashSet<>(keys))));
     for ( int i = 0, n = keys.size(); i < n; i++ ) {
-      Assert.assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
+      assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
     }
   }
 
@@ -127,21 +130,21 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
   public void testFischersFritzPut() {
     List<String> keys = FISCHERS_FRITZ;
     SymbolTable<String, Integer> map = newSymbolTable(keys);
-    Assert.assertThat(map.keySet().size(), is(equalTo(5)));
-    Assert.assertThat(map.keySet(), is(equalTo((Set<String>)new HashSet<>(keys))));
+    assertThat(map.keySet().size(), is(equalTo(5)));
+    assertThat(map.keySet(), is(equalTo((Set<String>)new HashSet<>(keys))));
     for ( int i = 0, n = keys.size(); i < n; i++ ) {
-      Assert.assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
+      assertThat(map.get(keys.get(i)), is(equalTo(keys.lastIndexOf(keys.get(i)))));
     }
   }
 
   @Test
   public void testFloor() {
-    Assert.fail();
+    fail();
   }
   
   @Test
   public void testCeiling() {
-    Assert.fail();
+    fail();
   }
 
   @Test
@@ -151,17 +154,17 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
     Arrays.sort(sorted);
     sorted = Arrays.copyOfRange(sorted, 1000, 2000);
     SymbolTable<String, Integer> map = newSymbolTable(sorted);
-    Assert.assertThat(map.min().getKey(), is(equalTo(sorted[0])));
+    assertThat(map.min().getKey(), is(equalTo(sorted[0])));
   }
 
   @Test
   public void testMax() {
     SymbolTable<String, Integer> map = newSymbolTable(UnsortedArrays.ulysses());
-    Assert.assertThat(map.max().getKey(), is(equalTo("")));
+    assertThat(map.max().getKey(), is(equalTo("")));
   }
   
   @Test
   public void testDelete() {
-    Assert.fail();
+    fail();
   }
 }

@@ -2,7 +2,7 @@ package org.avidd.maps;
 
 import org.junit.jupiter.api.Disabled;
 
-@Disabled // Not yet implemented
+@Disabled("not yet implemented")
 public class RWayTrieTest extends CharSeqMapTest {
 
   @Override

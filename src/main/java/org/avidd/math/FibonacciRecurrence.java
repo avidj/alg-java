@@ -2,11 +2,13 @@ package org.avidd.math;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.math.RoundingMode;
 
+// compute fib with Binet's formula
 public final class FibonacciRecurrence implements Fibonacci {
   private static final BigDecimal SQRT_5 = BigDecimal.valueOf(Math.sqrt(5.0));
-  private static final BigDecimal PHI = BigDecimal.valueOf(1.0 + Math.sqrt(5.0) / 2.0);
-  private static final BigDecimal PHI_D = BigDecimal.valueOf(1.0 - Math.sqrt(5.0) / 2.0);
+  private static final BigDecimal PHI = BigDecimal.valueOf((1.0 + Math.sqrt(5.0)) / 2.0);
+  private static final BigDecimal PHI_D = BigDecimal.valueOf((1.0 - Math.sqrt(5.0)) / 2.0);
 
   @Override
   public BigInteger fib(int n) {
@@ -16,7 +18,10 @@ public final class FibonacciRecurrence implements Fibonacci {
     if ( n <= 1 ) {
       return BigInteger.valueOf(n);
     }
-    return pow(PHI, n).divide(SQRT_5).subtract(pow(PHI_D, n).divide(SQRT_5)).toBigInteger();
+    return pow(PHI, n)
+            .divide(SQRT_5, 10, RoundingMode.HALF_UP)
+            .subtract(pow(PHI_D, n).divide(SQRT_5, 10, RoundingMode.HALF_UP))
+            .toBigInteger();
   }
 
   private static BigDecimal pow(BigDecimal x, int n) {

@@ -2,6 +2,11 @@ package org.avidd.math;
 
 import java.math.BigInteger;
 
+/**
+ * This is basically again the incremental variant, but instead of sliding the
+ * intermediate values through fib-1 and fib-2, this alternates between accessing
+ * the same values from a 2-dim array. An experiment.
+ */
 public final class FibonacciSwap implements Fibonacci {
 
   @Override

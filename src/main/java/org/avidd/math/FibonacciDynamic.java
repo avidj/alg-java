@@ -1,29 +1,75 @@
 package org.avidd.math;
 
 import java.math.BigInteger;
+import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * Not actually dynamic programming, only memoization, like the all-variant, but
+ * adding synchronization. This lends itself to parallelization variants where
+ * you just call the recursive definition but avoid recomputation. It's an experiment.
+ */
 public final class FibonacciDynamic implements Fibonacci {
-  private final BigInteger[] cache = new BigInteger[1000];
+  private AtomicReference<BigInteger>[] cache;
+  private boolean isInitialized = false;
+  private final Lock initializing = new ReentrantLock();
 
-  public FibonacciDynamic() {
-    cache[0] = BigInteger.ZERO;
-    cache[1] = BigInteger.ONE;
+  public void init(int n) {
+    synchronized ( this ) {
+      if ( isInitialized ) {
+        return;
+      }
+    }
+    if ( !initializing.tryLock() ) {
+      // another thread was faster to start initializing
+      synchronized ( this ) {
+        while ( !isInitialized ) {
+          try {
+            Thread.currentThread().wait();
+          } catch ( InterruptedException e ) {
+            // can be ignored
+          }
+        }
+      }
+      return; // initialization finished
+    }
+
+    try {
+      this.cache = new AtomicReference[n + 1];
+      Thread init = new Thread(() -> {
+        for ( int i = 2; i <= n; i++ ) {
+          cache[i] = new AtomicReference<>();
+        }
+      });
+      init.start();
+      cache[0] = new AtomicReference(BigInteger.ZERO);
+      cache[1] = new AtomicReference(BigInteger.ONE);
+      init.join();
+      synchronized ( this ) {
+        this.isInitialized = true;
+      }
+    } catch ( InterruptedException e ) {
+      // ignore
+    } finally {
+      this.initializing.unlock();
+    }
+    
+
   }
   
   @Override
-  public BigInteger fib(int n) {
-    if ( n < 0 || n > cache.length ) {
+  public BigInteger fib(int k) {
+    this.init(k);
+    if ( k < 0 || k > cache.length ) {
       throw new IllegalArgumentException();
     }
-    synchronized ( cache ) {
-      if ( cache[n] != null ) {
-        return cache[n];
-      }
+    BigInteger fib = cache[k].get();
+    if ( fib != null ) {
+      return fib;
     }
-    BigInteger fib = fib(n - 1).add(fib(n - 2));
-    synchronized ( cache ) {
-      cache[n] = fib;
-    }
+    fib = fib(k - 1).add(fib(k - 2));
+    cache[k].set(fib);
     return fib;
   }
 }

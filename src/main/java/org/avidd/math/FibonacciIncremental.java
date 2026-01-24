@@ -2,6 +2,10 @@ package org.avidd.math;
 
 import java.math.BigInteger;
 
+/**
+ * This is the first improvement over the naive (recursive) implementation:
+ * computing the series incrementally to terminate at fib(n).
+ */
 public final class FibonacciIncremental implements Fibonacci {
 
   @Override

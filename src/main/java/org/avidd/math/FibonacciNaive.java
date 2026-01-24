@@ -2,6 +2,9 @@ package org.avidd.math;
 
 import java.math.BigInteger;
 
+/**
+ * This is the naive implementation, extremely slow due to massively redundant computations.
+ */
 public final class FibonacciNaive implements Fibonacci {
 
   @Override

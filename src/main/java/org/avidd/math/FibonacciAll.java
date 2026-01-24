@@ -2,6 +2,9 @@ package org.avidd.math;
 
 import java.math.BigInteger;
 
+/**
+ * Incremental computation of n, but (unnecessarily) storing all intermediate results.
+ */
 public final class FibonacciAll implements Fibonacci {
 
   @Override

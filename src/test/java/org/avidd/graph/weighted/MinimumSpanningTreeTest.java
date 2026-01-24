@@ -31,7 +31,7 @@ public class MinimumSpanningTreeTest {
     EdgeWeightedGraph mst = mstStrategy.mst(graph);
     System.out.println(mst);
     MatcherAssert.assertThat(mst.v(), is(equalTo(graph.v())));
-    MatcherAssert.assertThat(costs(mst), is(equalTo(181)));
+    MatcherAssert.assertThat(costs(mst), is(equalTo(181.0)));
 
     EdgeWeightedGraph expected = new EdgeWeightedGraph().edge(0, 2, 26).edge(0, 7, 16)
         .edge(1, 7, 19).edge(2, 3, 17).edge(4, 5, 35).edge(5, 7, 28).edge(6, 2, 40);

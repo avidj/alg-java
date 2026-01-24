@@ -10,13 +10,11 @@ import org.avidd.math.FibonacciIncremental;
 import org.avidd.math.FibonacciRecurrence;
 import org.avidd.math.FibonacciSwap;
 import org.hamcrest.MatcherAssert;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public class FibonacciTest {
 
   @Test
-  @Disabled
   public void testAllFib() {
     int[] values = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 10000 };
     for ( int n : values ) {
@@ -41,7 +39,6 @@ public class FibonacciTest {
   }
 
   @Test
-  @Disabled
   public void testRecurrenceFib() {
     int[] values = { 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 10000 };
     for ( int n : values ) {

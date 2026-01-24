@@ -8,10 +8,17 @@ import org.hamcrest.MatcherAssert;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-public class HashValueTest {
+/**
+ * This test produced an algorithmic complexity attack that was fixed in Java 8.
+ * The strings Aa and BB produce the same hash code. Therefore, they can be used
+ * to generate large numbers of keys for a hash map that all hash into the same bucket.
+ * In java 8, the hash map has been adapted to switch to balanced trees for large buckets,
+ * with many collisions. Therefore, the slowdown has become neglectable.
+ * @author david
+ */
+public class AlgorithmicComplexityAttackTest {
 
   @Test
   public void testOverflow() {
@@ -44,22 +51,28 @@ public class HashValueTest {
   }
 
   @Test
-  public void testAlgorithmicComplexityAttack10000() {
-    algorithmicComplexityAttack(10000);
+  public void testAlgorithmicComplexityAttack10_000() {
+    algorithmicComplexityAttack(10_000);
   }
 
-  @Disabled
   @Test
-  public void testAlgorithmicComplexityAttack100000() {
-    algorithmicComplexityAttack(100000);
+  public void testAlgorithmicComplexityAttack100_000() {
+    algorithmicComplexityAttack(100_000);
+  }
+
+    @Test
+  public void testAlgorithmicComplexityAttack10_000_000() {
+    algorithmicComplexityAttack(10_000_000);
   }
 
   private void algorithmicComplexityAttack(int severity) {
     String[] r = new String[] { "Aa", "BB" };
     Map<String, String> map = new HashMap<>();
 
+    int previous = toString(r, 0).hashCode();
     for ( int i = 0; i < severity; i++ ) {
       String s = toString(r, i);
+      assert(previous == s.hashCode());
       map.put(s, s);
     }
   }

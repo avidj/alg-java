@@ -6,7 +6,6 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import org.hamcrest.MatcherAssert;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Disabled;
 
 public abstract class AbstractFibonacciTest {
   
@@ -39,21 +38,10 @@ public abstract class AbstractFibonacciTest {
     MatcherAssert.assertThat(result, is(equalTo(expected)));
   }
 
-  @Disabled("too slow for regular test run")
   @Test
   public void testFib40() {
     int n = 40;
     BigInteger expected = BigInteger.valueOf(102334155);
-    BigInteger result = fib().fib(n);
-    System.err.println("Fib(" + n + ") = " + result);
-    MatcherAssert.assertThat(result, is(equalTo(expected)));
-  }
-
-  @Disabled("too slow for regular test run")
-  @Test
-  public void testFib45() {
-    int n = 45;
-    BigInteger expected = BigInteger.valueOf(1134903170);
     BigInteger result = fib().fib(n);
     System.err.println("Fib(" + n + ") = " + result);
     MatcherAssert.assertThat(result, is(equalTo(expected)));

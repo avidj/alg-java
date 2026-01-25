@@ -26,7 +26,7 @@ public final class FibonacciDynamic implements Fibonacci {
       synchronized ( this ) {
         while ( !isInitialized ) {
           try {
-            Thread.currentThread().wait();
+            this.wait();
           } catch ( InterruptedException e ) {
             // can be ignored
           }
@@ -48,6 +48,7 @@ public final class FibonacciDynamic implements Fibonacci {
       init.join();
       synchronized ( this ) {
         this.isInitialized = true;
+        this.notifyAll();
       }
     } catch ( InterruptedException e ) {
       // ignore

@@ -18,41 +18,99 @@
     <annotationProcessorOutputDir>target/generated-sources</annotationProcessorOutputDir>
   </properties>
 
+<dependencyManagement>
+    <dependencies>  
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-bom</artifactId>
+            <version>2.23.1</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-bom -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-bom</artifactId>
+            <version>2.0.17</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit-bom</artifactId>
+            <version>6.0.2</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-framework-bom</artifactId>
+            <version>6.2.9</version>
+            <type>pom</type>
+            <scope>import</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.auto.value</groupId>
+            <artifactId>auto-value-annotations</artifactId>
+            <version>${auto-value.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>3.0</version>
+            <scope>test</scope>
+        </dependency>
+<!--      
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite</artifactId>
+            <version>1.9.1</version>
+            <scope>test</scope>
+        </dependency>
+-->            
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.9.0</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+</dependencyManagement>
 
   <dependencies>
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-api</artifactId>
-      <version>2.0-rc1</version>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.logging.log4j</groupId>
-      <artifactId>log4j-core</artifactId>
-      <version>2.0-rc1</version>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-api</artifactId>
+        <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-core</artifactId>
-      <version>2.2.2</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-databind</artifactId>
-      <version>2.2.2</version>
-    </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.core</groupId>
-      <artifactId>jackson-annotations</artifactId>
-      <version>2.2.2</version>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-core</artifactId>
+        <scope>provided</scope>
     </dependency>
     <!-- END OF LOG4J DEPENDENCIES -->
 		
     <!-- TEST SCOPE DEPENDENCIES -->
-    <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+    <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j2-impl</artifactId>
+        <scope>test</scope>
+    </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>6.0.2</version>
       <scope>test</scope>
     </dependency>
 
@@ -60,35 +118,30 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
-      <version>6.0.2</version>
       <scope>test</scope>
     </dependency>
     
     <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
-        <version>6.0.2</version>
         <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-suite-api</artifactId>
-      <version>6.0.2</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.junit.platform</groupId>
       <artifactId>junit-platform-suite-engine</artifactId>
-      <version>6.0.2</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.hamcrest</groupId>
       <artifactId>hamcrest</artifactId>
-      <version>3.0</version>
       <scope>test</scope>
     </dependency>
     
@@ -115,14 +168,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>${compileSource}</source>
-          <target>${compileSource}</target>
-          <complianceLevel>${compileSource}</complianceLevel>
-          <showWarnings>true</showWarnings>
-          <showDeprecation>true</showDeprecation>
-          <compilerArgument>-Xlint:all</compilerArgument>
-        </configuration>
       </plugin>
 
       <!-- compute test coverage -->
@@ -135,27 +180,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>test-jar</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
 
       <!-- disable CBC protection as it is buggy in JRE 1.6 U28-U30 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <forkMode>once</forkMode>
-          <argLine>-Djava.library.path=${project.build.directory}/lib
-            -Djsse.enableCBCProtection=false</argLine>
-          <systemPropertyVariables>
-            <java.library.path>${project.build.directory}/lib</java.library.path>
-          </systemPropertyVariables>
-        </configuration>
       </plugin>
 
       <!-- the build-helper plugin is included to deal with the missing annotation 
@@ -293,8 +323,12 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
           <version>3.5.4</version>
-          <configuration>
+          <configuration>´
             <testFailureIgnore>true</testFailureIgnore>
+            <argLine>-Djava.library.path=${project.build.directory}/lib -Djsse.enableCBCProtection=false</argLine>
+            <systemPropertyVariables>
+              <java.library.path>${project.build.directory}/lib</java.library.path>
+            </systemPropertyVariables>
           </configuration>
         </plugin>
 
@@ -361,8 +395,6 @@
           <configuration>
             <source>${compileSource}</source>
             <target>${compileSource}</target>
-            <complianceLevel>${compileSource}</complianceLevel>
-
             <showWarnings>true</showWarnings>
             <showDeprecation>true</showDeprecation>
             <compilerArgument>-Xlint:all</compilerArgument>

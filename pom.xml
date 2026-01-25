@@ -308,12 +308,10 @@
               <additionnalDependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
-                <version>5.11.0-RC1</version>
               </additionnalDependency>
               <additionnalDependency>
                 <groupId>org.hamcrest</groupId>
                 <artifactId>hamcrest</artifactId>
-                <version>3.0</version>
               </additionnalDependency>
             </additionnalDependencies>
           </configuration>

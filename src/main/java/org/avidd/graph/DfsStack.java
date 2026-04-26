@@ -29,9 +29,9 @@ class DfsStack implements Traversal {
       int v = stack.pop();
       for ( int w : g.adj(v) ) {
         if ( !marked[w] ) {
+          stack.push(w);
           marked[w] = true;
           edgeTo[w] = v;
-          stack.push(w);
         }
       }
     }

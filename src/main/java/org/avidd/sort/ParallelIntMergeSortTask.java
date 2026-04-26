@@ -9,12 +9,12 @@ class ParallelIntMergeSortTask extends RecursiveTask<int[]> {
   private final int r;
   private final int[] a;
 
-  ParallelIntMergeSortTask(int[] aArray, int aL, int aR, int aThreshold) {
-    threshold = aThreshold;
+  ParallelIntMergeSortTask(int[] aArray, int l, int r, int threshold) {
     a = aArray;
-    l = aL;
-    r = aR;
-  }
+    this.l = l;
+    this.r = r;
+    this.threshold = threshold;
+   }
 
   @Override
   protected int[] compute() {
@@ -45,21 +45,14 @@ class ParallelIntMergeSortTask extends RecursiveTask<int[]> {
     int j = l; // position in left subarray
     int k = m + 1; // position in right subarray
     while ( ( j <= m ) && ( k <= r ) ) { // until any half is exhausted
-      if ( a[j] <= a[k] ) {
-        b[i++] = a[j++];
-      } // copy value from left if <= right
-      else {
-        b[i++] = a[k++];
-      } // copy value from right if < than left
+      if ( a[j] <= a[k] ) { b[i++] = a[j++]; }
+      else                { b[i++] = a[k++]; }
     }
-    while ( j <= m ) {
-      b[i++] = a[j++];
-    } // copy remainder from the left half, or
-    while ( k <= r ) {
-      b[i++] = a[k++];
-    } // copy remainder from the right half
+    while ( j <= m ) { b[i++] = a[j++]; } 
+    while ( k <= r ) { b[i++] = a[k++]; } 
+    // copy results back from b to a
     for ( i = l; i <= r; i++ ) {
       a[i] = b[i - l];
-    } // copy results back from b to a
+    }
   }
 }

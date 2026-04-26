@@ -14,8 +14,8 @@ class ParallelIntMergeSort implements IntSortStrategy {
    * 
    * @param aThreshold problems smaller than this threshold are not parallelized
    */
-  ParallelIntMergeSort(int aThreshold) {
-    threshold = aThreshold;
+  ParallelIntMergeSort(int threshold) {
+    this.threshold = threshold;
   }
 
   @Override

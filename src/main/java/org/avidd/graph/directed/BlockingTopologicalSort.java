@@ -14,13 +14,13 @@ public class BlockingTopologicalSort implements TopologicalSort {
   private final int[] edgeTo;
   private final boolean[] onStack;
   private List<Integer> cycle;
-  private final List<Integer> reversePost;
+  private final List<Integer> topOrder;
 
   public BlockingTopologicalSort(Digraph g) {
     marked = new boolean[g.v()];
     edgeTo = new int[g.v()];
     onStack = new boolean[g.v()];
-    reversePost = new Stack<>();
+    topOrder = new Stack<>();
     for ( int v = 0; v < g.v(); v++ ) {
       if ( !marked[v] ) {
         traverse(g, v);
@@ -35,7 +35,6 @@ public class BlockingTopologicalSort implements TopologicalSort {
       if ( cycle != null )
         return;
       if ( !marked[w] ) {
-        onStack[w] = true;
         edgeTo[w] = v;
         traverse(g, w);
       } else if ( onStack[w] ) {
@@ -47,7 +46,7 @@ public class BlockingTopologicalSort implements TopologicalSort {
       }
     }
     onStack[v] = false;
-    reversePost.add(0, v);
+    topOrder.add(0, v);
   }
 
   @Override
@@ -59,9 +58,9 @@ public class BlockingTopologicalSort implements TopologicalSort {
   public List<Integer> getCycle() {
     return Collections.unmodifiableList(cycle);
   }
-
+  
   @Override
   public List<Integer> getTopologicalOrder() {
-    return Collections.unmodifiableList(reversePost);
+    return Collections.unmodifiableList(topOrder);
   }
 }

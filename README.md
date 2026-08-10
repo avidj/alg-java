@@ -27,6 +27,7 @@ parallel one. They are meant to be compared against each other, not to be dedupl
 The counts include only working algorithm implementations — interfaces, node classes, graph and edge
 data types, ForkJoin task classes, facades and utilities are not counted, and neither are the two
 unfinished sketches (`PatriciaTree`, `SuffixTree`, see below).
+Excludes the unfinished sketches; known defects in individual operations are listed under State of the code.
 
 ## How it is organized
 

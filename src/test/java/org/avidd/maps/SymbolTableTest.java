@@ -9,13 +9,14 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.avidd.sort.UnsortedArrays;
 import org.hamcrest.MatcherAssert;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 
 public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
@@ -43,20 +44,25 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
 
   @Test
   public void testUlysses() {
-    SymbolTable<String, Integer> map = newSymbolTable(UnsortedArrays.ulysses());
-    MatcherAssert.assertThat(map.keySet().size(), is(equalTo(50107)));
+    assertCorpusKeyCount(UnsortedArrays.ulysses());
   }
 
   @Test
   public void testLeonardoDaVinci() {
-    SymbolTable<String, Integer> map = newSymbolTable(UnsortedArrays.leonardoDaVinci());
-    MatcherAssert.assertThat(map.keySet().size(), is(equalTo(23589)));
+    assertCorpusKeyCount(UnsortedArrays.leonardoDaVinci());
   }
 
   @Test
   public void testOutlineOfScience() {
-    SymbolTable<String, Integer> map = newSymbolTable(UnsortedArrays.outlineOfScience());
-    MatcherAssert.assertThat(map.keySet().size(), is(equalTo(18040)));
+    assertCorpusKeyCount(UnsortedArrays.outlineOfScience());
+  }
+
+  /** The table must hold exactly the distinct tokens of the corpus, differentially checked
+   * against {@link HashSet}. */
+  private void assertCorpusKeyCount(String[] corpus) {
+    SymbolTable<String, Integer> map = newSymbolTable(corpus);
+    Set<String> distinct = new HashSet<>(Arrays.asList(corpus));
+    MatcherAssert.assertThat(map.keySet().size(), is(equalTo(distinct.size())));
   }
 
   @Test
@@ -137,34 +143,74 @@ public abstract class SymbolTableTest<T extends SymbolTable<String, Integer>> {
     }
   }
 
+  /** Probes around, between, on and outside the SEA_SHELLS keys. */
+  private static final List<String> FLOOR_CEILING_PROBES = Arrays.asList(
+      "a", "by", "by ", "c", "sea", "sf", "sh", "she", "shellz", "shorf", "the", "thf", "z");
+
   @Test
   public void testFloor() {
-    fail();
+    SymbolTable<String, Integer> map = newSymbolTable(SEA_SHELLS);
+    TreeSet<String> model = new TreeSet<>(SEA_SHELLS);
+    for ( String probe : FLOOR_CEILING_PROBES ) {
+      Map.Entry<String, Integer> floor = map.floor(probe);
+      assertThat("floor(\"" + probe + "\")", floor == null ? null : floor.getKey(),
+          is(equalTo(model.floor(probe))));
+    }
   }
-  
+
   @Test
   public void testCeiling() {
-    fail();
+    SymbolTable<String, Integer> map = newSymbolTable(SEA_SHELLS);
+    TreeSet<String> model = new TreeSet<>(SEA_SHELLS);
+    for ( String probe : FLOOR_CEILING_PROBES ) {
+      Map.Entry<String, Integer> ceiling = map.ceiling(probe);
+      assertThat("ceiling(\"" + probe + "\")", ceiling == null ? null : ceiling.getKey(),
+          is(equalTo(model.ceiling(probe))));
+    }
   }
 
   @Test
   public void testMin() {
-    String[] sorted = UnsortedArrays.ulysses().clone();
-    sorted = new LinkedHashSet<>(Arrays.asList(sorted)).toArray(new String[0]);
-    Arrays.sort(sorted);
-    sorted = Arrays.copyOfRange(sorted, 1000, 2000);
+    String[] sorted = distinctSortedUlyssesSlice();
     SymbolTable<String, Integer> map = newSymbolTable(sorted);
     assertThat(map.min().getKey(), is(equalTo(sorted[0])));
   }
 
   @Test
   public void testMax() {
-    SymbolTable<String, Integer> map = newSymbolTable(UnsortedArrays.ulysses());
-    assertThat(map.max().getKey(), is(equalTo("")));
+    String[] sorted = distinctSortedUlyssesSlice();
+    SymbolTable<String, Integer> map = newSymbolTable(sorted);
+    assertThat(map.max().getKey(), is(equalTo(sorted[sorted.length - 1])));
   }
-  
+
+  private static String[] distinctSortedUlyssesSlice() {
+    String[] sorted = new LinkedHashSet<>(Arrays.asList(UnsortedArrays.ulysses()))
+        .toArray(new String[0]);
+    Arrays.sort(sorted);
+    return Arrays.copyOfRange(sorted, 1000, 2000);
+  }
+
   @Test
   public void testDelete() {
-    fail();
+    SymbolTable<String, Integer> map = newSymbolTable(SEA_SHELLS);
+    TreeSet<String> model = new TreeSet<>(SEA_SHELLS);
+
+    for ( String key : Arrays.asList("she", "by", "zzz" /* not present */) ) {
+      map.delete(key);
+      model.remove(key);
+      assertThat("contains(\"" + key + "\") after delete", map.contains(key), is(false));
+      assertThat(map.keySet(), is(equalTo((Set<String>)model)));
+    }
+    // the surviving keys must keep their values
+    for ( String key : model ) {
+      assertThat(map.get(key), is(equalTo(SEA_SHELLS.lastIndexOf(key))));
+    }
+    // deleting the rest must empty the table
+    for ( String key : new TreeSet<>(model) ) {
+      map.delete(key);
+      model.remove(key);
+      assertThat(map.keySet(), is(equalTo((Set<String>)model)));
+    }
+    assertThat(map.keySet().size(), is(equalTo(0)));
   }
 }

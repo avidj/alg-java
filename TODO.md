@@ -3,6 +3,26 @@
 Obviously, this is mainly a list of what you won't find in this repository.
 Check out the sources to see what's there.
 
+### Known gaps in existing implementations
+
+These are documented by `@Disabled` tests naming this file:
+
+* **TODO** `LLRedBlackBst.delete`/`deleteMin` are broken: `fixUp()` is an unimplemented stub
+  returning null, so any deletion nulls out the tree (`RedBlackBstTest`)
+* **TODO** `PatriciaTree` is an unfinished sketch: `put()` is incomplete and the `get()` helper is
+  an empty stub; most other methods throw `UnsupportedOperationException` (`PatriciaTreeTest`)
+* **TODO** `SuffixTree` is an unfinished sketch: every method throws
+  `UnsupportedOperationException`
+* **TODO** `TernaryTree.delete` never clears the value of a key that has no longer extensions and
+  prunes nodes that still carry values (`TernaryTreeTest`)
+* **TODO** `TernaryTree.min`/`max` descend only left/right children and miss the middle path
+* **TODO** `TernaryTree.floor` is unfinished (throws unconditionally); `ceiling` and `rank` are
+  stubs; `range` is half-finished
+* **TODO** `RWayTrie.min`/`max`/`floor`/`ceiling` are unimplemented stubs
+* **TODO** `rank`/`range`/`deleteMin`/`deleteMax` of `StringSymbolTable` have no conformance
+  tests; the former placeholder tests in `CharSeqMapTest` were empty `fail()` stubs and were
+  removed
+
 ### Utils
 * **baseX** encodingx
 

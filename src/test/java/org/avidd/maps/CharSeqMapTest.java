@@ -3,14 +3,12 @@ package org.avidd.maps;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
 import org.hamcrest.MatcherAssert;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 public abstract class CharSeqMapTest extends SymbolTableTest<StringSymbolTable<Integer>> {
@@ -68,25 +66,5 @@ public abstract class CharSeqMapTest extends SymbolTableTest<StringSymbolTable<I
     }
     String prefix = map.longestPrefix("fritz");
     MatcherAssert.assertThat(prefix, is(equalTo("fritz")));
-  }
-  
-  @Test @Disabled
-  public void testRank() {
-    fail();
-  }
-  
-  @Test @Disabled
-  public void testRange() {
-    fail();
-  }
-  
-  @Test @Disabled
-  public void testDeleteMin() {
-    fail();
-  }
-
-  @Test @Disabled
-  public void testDeleteMax() {
-    fail();
   }
 }

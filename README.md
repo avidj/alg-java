@@ -4,16 +4,16 @@ Algorithms and data structures implemented from scratch in Java. I wrote this to
 knowledge, and to have a place where I can try design ideas without production constraints. It is not a
 library and I do not recommend depending on it. `java.util` is faster and better tested.
 
-About 90 implementations covering roughly 60 distinct algorithms and data structures.
+84 implementations covering about 57 distinct algorithms and data structures.
 
 ## Contents
 
 | Area | Implementations | What is in there |
 |---|---|---|
-| Sorting | 33 | insertion, selection, bubble, shaker, shell, heap, merge, optimal merge, quick, three-way quick, quickselect, partial sort, counting, bucket, LSD/MSD/straight radix, inversion counting |
+| Sorting | 33 | insertion, selection, bubble, shaker, shell, heap, merge, optimal merge, quick (recursive and explicit stack), three-way quick, quickselect, counting, bucket, LSD/MSD/straight radix, inversion counting |
 | Graphs | 16 | BFS, DFS (recursive and explicit stack), Dijkstra, Bellman-Ford, DAG shortest paths, connected components, strongly connected components, topological sort, Ford-Fulkerson max flow, Kruskal, Prim (lazy and eager), scheduling |
-| Symbol tables and trees | 8 | left-leaning red-black BST, Patricia tree, R-way trie, ternary search tree, suffix tree, Fenwick tree, linear probing and separate chaining hash maps |
-| Strings | 8 | Knuth-Morris-Pratt, Rabin-Karp Las Vegas (plain and incremental), brute force with and without explicit backup, Levenshtein, longest repeated substring |
+| Symbol tables and trees | 6 | left-leaning red-black BST, R-way trie, ternary search tree, Fenwick tree, linear probing and separate chaining hash maps |
+| Strings | 7 | Knuth-Morris-Pratt, Rabin-Karp Las Vegas (plain and incremental), brute force with and without explicit backup, Levenshtein, longest repeated substring |
 | Heaps and queues | 5 | binary min/max heap, indexed min/max heap, array queue |
 | Union-find | 4 | quick-find, quick-union, weighted quick-union, weighted quick-union with path compression |
 | Math | 8 | six sequential Fibonacci strategies plus a ForkJoin one, fast exponentiation |
@@ -23,6 +23,10 @@ About 90 implementations covering roughly 60 distinct algorithms and data struct
 The implementation count is higher than the algorithm count on purpose. Several algorithms exist in more
 than one form: a generic version and an `int`-specialized one, or a sequential version and a ForkJoin
 parallel one. They are meant to be compared against each other, not to be deduplicated.
+
+The counts include only working algorithm implementations — interfaces, node classes, graph and edge
+data types, ForkJoin task classes, facades and utilities are not counted, and neither are the two
+unfinished sketches (`PatriciaTree`, `SuffixTree`, see below).
 
 ## How it is organized
 
@@ -34,7 +38,9 @@ the implementation.
 Consequently the test suites are conformance suites. `AbstractSortTest` and `AbstractIntSortTest` define
 the behaviour every sort must satisfy, time each run, and are subclassed once per implementation.
 `SystemSortTest` and `IntSystemSortTest` put `java.util.Arrays.sort` through the same suite, so the JDK
-is a baseline in the same harness as everything else.
+is a baseline in the same harness as everything else. The symbol tables run through the same pattern:
+`SymbolTableTest` and `CharSeqMapTest` are shared conformance suites subclassed per data structure, and
+they check against `java.util` models (`HashSet`, `TreeSet`) instead of hard-coded expectations.
 
 Sorting is tested on random arrays and on real text: Joyce's *Ulysses*, the Da Vinci notebooks, and
 another Gutenberg corpus. Random input hides the cases where a sort actually differs.
@@ -48,19 +54,43 @@ single `HashMap` bucket, and measures the degradation. Java 8 made this mostly h
 large buckets to balanced trees; the test documents where the boundary now is. It also checks the
 `Math.abs(Integer.MIN_VALUE)` overflow that makes the naive way of computing a bucket index wrong.
 
-`KillJavaSortTest` feeds McIlroy anti-quicksort inputs to `java.util.Arrays.sort` at 10K, 250K and 1M
-elements, where it is expected to fail rather than sort. It is currently disabled and the generated input
-files are not checked in.
+`KillJavaSortTest` implements McIlroy's killer adversary (M. D. McIlroy, *A Killer Adversary for
+Quicksort*, 1999) as a test-time generator, `AntiQuicksort`, instead of the checked-in input files an
+earlier version relied on. The adversary answers comparisons adaptively and freezes values lazily, so
+shuffling and median-of-3 pivots are no defence. Observed results (Temurin OpenJDK 24):
+
+- This repo's own `QuickSort` is driven to ~n²/4 comparisons at 10K elements and into
+  `StackOverflowError` at 50K — the failure the original test expected, but from the repo's quicksort,
+  not the JDK's.
+- `Arrays.sort(Object[])` (TimSort) sees the adversary's frozen values as one ascending run and
+  finishes after exactly n−1 comparisons.
+- `Arrays.sort(int[])` (dual-pivot quicksort) exposes no comparator, which is the adversary's whole
+  lever. On the recorded adversarial permutations at 10K, 250K and 1M elements it stays clearly
+  O(n log n). The original expectation that it would fail does not hold on a modern JDK.
 
 ## State of the code
 
-Sorting, strings, graphs and union-find are covered by running tests. The symbol table corner is not:
-`RedBlackBstTest` and `PatriciaTreeTest` are disabled stubs, so the left-leaning red-black BST and the
-Patricia tree are implemented but untested. Four tests in `CharSeqMapTest` are disabled as well.
+Sorting, strings, graphs, union-find, compression and the bitwise stream helpers are covered by running
+tests. The symbol tables run through the shared conformance suites, and `RedBlackBstTest` additionally
+verifies the red-black invariants — no right-leaning red links, no two consecutive reds, perfect black
+balance, BST order — after randomised and sorted insertion sequences.
+
+Running the previously disabled suites exposed real defects, which are documented rather than hidden:
+every remaining `@Disabled` test states its reason and has a matching entry in `TODO.md`. The known ones
+are: `LLRedBlackBst.delete` destroys the tree (its `fixUp` helper is an unimplemented stub);
+`TernaryTree`'s `delete`, `min` and `max` are buggy and its `floor`/`ceiling` unfinished; `RWayTrie`'s
+ordered operations (`min`/`max`/`floor`/`ceiling`) are stubs; and `PatriciaTree` and `SuffixTree` are
+unfinished sketches, not working data structures.
 
 Documentation is thin, and the code does not always follow the conventions I prefer at work — curly
 braces are sometimes omitted. `TODO.md` lists what is not here: mining, clustering, and social network
 algorithms, mostly.
+
+## License
+
+Apache-2.0, see `LICENSE`. The repository contains no third-party code: the bitwise stream helpers
+originally taken from the algs4 booksite were replaced by an independent reimplementation written
+against a specification (`docs/binary-streams.md`) and conformance tests that were written first.
 
 ## Build
 

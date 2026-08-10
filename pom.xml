@@ -8,6 +8,14 @@
     <packaging>jar</packaging>
     <name>alg-java</name>
 
+    <licenses>
+        <license>
+            <name>Apache-2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <auto-value.version>1.11.0</auto-value.version>
@@ -303,9 +311,6 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.5.4</version>
-                    <configuration>
-                        <testFailureIgnore>true</testFailureIgnore>
-                    </configuration>
                 </plugin>
 
                 <!-- Configure the jar plugin to include each project's classpath into 

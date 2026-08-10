@@ -331,7 +331,9 @@
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.12</version>
+                    <!-- 0.8.12 cannot instrument JDK 24 platform classes (e.g. java.sql.Date,
+                         class file major version 68); 0.8.13 fixes this -->
+                    <version>0.8.13</version>
                     <executions>
                         <execution>
                             <goals>

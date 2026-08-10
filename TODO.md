@@ -145,8 +145,7 @@ These are documented by `@Disabled` tests naming this file:
 * Rabin-Karp
   * algs.string.RabinKarpLasVegas
   * algs.string.RabinKarpLasVegasIncremental
-  * algs.string.RabinKarpMonteCarlo (just remove the equality check from Las Vegas)
-  * algs.string.RabinKarpMonteCarloIncremental
+  * Monte Carlo variants (Las Vegas minus final verification, no point implementing)
 
 ### Regular Expressions
 * **TODO** REs and NFAs                    

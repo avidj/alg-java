@@ -22,6 +22,10 @@ These are documented by `@Disabled` tests naming this file:
 * **TODO** `rank`/`range`/`deleteMin`/`deleteMax` of `StringSymbolTable` have no conformance
   tests; the former placeholder tests in `CharSeqMapTest` were empty `fail()` stubs and were
   removed
+* **TODO** `KillJavaSortTest` is disabled: the McIlroy killer adversary (Bentley & McIlroy,
+  *A Killer Adversary for Quicksort*) needs to be implemented as a test-time input generator,
+  and the assertion needs to be rewritten against what `Arrays.sort` actually does on a modern
+  JDK rather than the commented-out `StackOverflowError` expectation
 
 ### Utils
 * **baseX** encodingx

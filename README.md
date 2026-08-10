@@ -54,19 +54,10 @@ single `HashMap` bucket, and measures the degradation. Java 8 made this mostly h
 large buckets to balanced trees; the test documents where the boundary now is. It also checks the
 `Math.abs(Integer.MIN_VALUE)` overflow that makes the naive way of computing a bucket index wrong.
 
-`KillJavaSortTest` implements McIlroy's killer adversary (M. D. McIlroy, *A Killer Adversary for
-Quicksort*, 1999) as a test-time generator, `AntiQuicksort`, instead of the checked-in input files an
-earlier version relied on. The adversary answers comparisons adaptively and freezes values lazily, so
-shuffling and median-of-3 pivots are no defence. Observed results (Temurin OpenJDK 24):
-
-- This repo's own `QuickSort` is driven to ~n²/4 comparisons at 10K elements and into
-  `StackOverflowError` at 50K — the failure the original test expected, but from the repo's quicksort,
-  not the JDK's.
-- `Arrays.sort(Object[])` (TimSort) sees the adversary's frozen values as one ascending run and
-  finishes after exactly n−1 comparisons.
-- `Arrays.sort(int[])` (dual-pivot quicksort) exposes no comparator, which is the adversary's whole
-  lever. On the recorded adversarial permutations at 10K, 250K and 1M elements it stays clearly
-  O(n log n). The original expectation that it would fail does not hold on a modern JDK.
+`KillJavaSortTest` is meant to attack `java.util.Arrays.sort` with McIlroy's killer adversary (M. D.
+McIlroy, *A Killer Adversary for Quicksort*, 1999), but is currently disabled: the input files it
+expects (`antiquicksort10K.txt`, `antiquicksort250K.txt`, `antiquicksort1M.txt`) are not checked in
+and the assertion is commented out. See `TODO.md`.
 
 ## State of the code
 

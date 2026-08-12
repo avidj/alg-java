@@ -5,7 +5,7 @@ package org.avidd.unionfind;
  * weighted quick union except that it compresses paths during the root(i)
  * lookup method. As the paths have no meaning this is absolutely ok and it
  * tremendously speeds up future lookup operations leading to cost of union and
- * find of only lg*(n) which is (in this universe) <= 5 and hence constant and a
+ * find of only lg*(n) which is (in this universe) &lt;= 5 and hence constant and a
  * cost of union find of (N + M lg*N) which is linear!
  */
 public class WeightedQuickUnionPathCompression extends WeightedQuickUnion {

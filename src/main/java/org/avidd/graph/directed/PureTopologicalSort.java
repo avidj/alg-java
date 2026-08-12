@@ -27,11 +27,13 @@ public class PureTopologicalSort implements TopologicalSort {
     topOrder.add(0, v);
   }
 
+  // in the other implementations
   @Override
   public boolean hasCycle() {
     throw new UnsupportedOperationException();
   }
 
+  // in the other implementations
   @Override
   public List<Integer> getCycle() {
     throw new UnsupportedOperationException();

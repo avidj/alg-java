@@ -55,7 +55,7 @@ These are documented by `@Disabled` tests naming this file:
 * **TODO** Trawling
 
 ### Data Streams
-* streams.BloomFilter
+* org.avidd.streams.BloomFilter
 * **TODO** Counting 1s
 * **TODO** Sampling
 * **TODO** Counting Distinct Elements
@@ -80,10 +80,10 @@ These are documented by `@Disabled` tests naming this file:
 
 ### Graphs 
 
-* graph.Dfs
-  * cycles
+* org.avidd.graph.Dfs
+  * **undirected cycles**
   * connected components
-* graph.Bfs
+* org.avidd.graph.Bfs
     
 * **TODO** Bipartite Graphs                                                                
 * **TODO** Finding cycles                                                                  
@@ -100,13 +100,13 @@ These are documented by `@Disabled` tests naming this file:
 + Digraph representation complexities
 * BFS: multiple sources, shortest paths, web crawler
 * Topological Sort: DepthFirstOrder
-  * graph.directed.TopologicalSort
-  * graph.directed.BlockingTopologicalSort
-  * graph.directed.FutureTopologicalSort
+  * org.avidd.graph.directed.TopologicalSort
+  * org.avidd.graph.directed.BlockingTopologicalSort
+  * org.avidd.graph.directed.FutureTopologicalSort
 * Directed Cycle Detection
   * strongly connected components (connected vs strongly connected)
 * Kosaraju-Sharir algorithm (BlockingStronglyConnectedComponents.java)
-* graph.directed.BlockingStronglyConnectedComponents?
+* org.avidd.graph.directed.BlockingStronglyConnectedComponents?
 
 ### MSTs
 * greedy algorithm
@@ -119,8 +119,8 @@ These are documented by `@Disabled` tests naming this file:
 * **TODO** Bor�vka                      
 
 ### Shortest Paths
-* graph.Dijkstra
-* graph.BellmanFord
+* org.avidd.graph.Dijkstra
+* org.avidd.graph.BellmanFord
 
 ### String Sorts
 * LSD Radix Sort
@@ -130,34 +130,34 @@ These are documented by `@Disabled` tests naming this file:
 
 ### Tries
 * R-way tries
-  * classic.maps.RWayTrie
+  * org.avidd.maps.RWayTrie
 * ternary search tries
-  * classic.maps.TernaryTree
+  * org.avidd.maps.TernaryTree
 * **TODO** character-based operations    
 
 ### Substring Search
 * brute force
-  * algs.string.BruteForce
-  * algs.string.BruteForceExplicitBackup
+  * org.avidd.string.BruteForce
+  * org.avidd.string.BruteForceExplicitBackup
 * Knuth-Morris Pratt
-  * algs.string.KnuthMorrisPratt
+  * org.avidd.string.KnuthMorrisPratt
 * **TODO** Boyer-Moore
 * Rabin-Karp
-  * algs.string.RabinKarpLasVegas
-  * algs.string.RabinKarpLasVegasIncremental
+  * org.avidd.string.RabinKarpLasVegas
+  * org.avidd.string.RabinKarpLasVegasIncremental
   * Monte Carlo variants (Las Vegas minus final verification, no point implementing)
 
 ### Regular Expressions
 * **TODO** REs and NFAs                    
 
 ### Data Compression
-* run-length coding
-* compression.Huffman
+* **TODO** run-length coding
+* org.avidd.compression.Huffman
 * **TODO** LZW compression                 
 * **TODO** Deflate (use R-Way Trie)
 
 ### Max-Flow
-* graph.weighted.FordFulkerson
+* org.avidd.graph.weighted.FordFulkerson
   * maxflow-mincut
   * **TODO** unit tests
 

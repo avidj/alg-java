@@ -56,7 +56,7 @@ These are documented by `@Disabled` tests naming this file:
 
 ### Data Streams
 * **TODO** Counting 1s
-* **TODO** Bloom Filters
+* Bloom Filters
 * **TODO** Sampling
 * **TODO** Counting Distinct Elements
 

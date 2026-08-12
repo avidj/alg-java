@@ -55,8 +55,8 @@ These are documented by `@Disabled` tests naming this file:
 * **TODO** Trawling
 
 ### Data Streams
+* streams.BloomFilter
 * **TODO** Counting 1s
-* Bloom Filters
 * **TODO** Sampling
 * **TODO** Counting Distinct Elements
 

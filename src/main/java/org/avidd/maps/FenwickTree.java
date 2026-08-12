@@ -11,7 +11,7 @@ public class FenwickTree {
 
   /**
    * Range Sum query from 1 to ind ind is 1-indexed
-   * <p/>
+   * <p>
    * Time-Complexity: O(log(n))
    */
   public int rsq(int ind) {
@@ -30,7 +30,7 @@ public class FenwickTree {
   /**
    * Range Sum Query from a to b. Search for the sum from array index from a to
    * b a and b are 1-indexed
-   * <p/>
+   * <p>
    * Time-Complexity: O(log(n))
    */
   public int rsq(int a, int b) {
@@ -42,7 +42,7 @@ public class FenwickTree {
   /**
    * Update the array at ind and all the affected regions above ind. ind is
    * 1-indexed
-   * <p/>
+   * <p>
    * Time-Complexity: O(log(n))
    */
   public void update(int ind, int value) {

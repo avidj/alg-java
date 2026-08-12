@@ -105,7 +105,7 @@ These are documented by `@Disabled` tests naming this file:
   * graph.directed.FutureTopologicalSort
 * Directed Cycle Detection
   * strongly connected components (connected vs strongly connected)
-* Kosaraju-Sharir algorithm
+* Kosaraju-Sharir algorithm (BlockingStronglyConnectedComponents.java)
 * graph.directed.BlockingStronglyConnectedComponents?
 
 ### MSTs
@@ -141,7 +141,7 @@ These are documented by `@Disabled` tests naming this file:
   * algs.string.BruteForceExplicitBackup
 * Knuth-Morris Pratt
   * algs.string.KnuthMorrisPratt
-* Boyer-Moore                     *
+* **TODO** Boyer-Moore
 * Rabin-Karp
   * algs.string.RabinKarpLasVegas
   * algs.string.RabinKarpLasVegasIncremental
@@ -152,19 +152,19 @@ These are documented by `@Disabled` tests naming this file:
 
 ### Data Compression
 * run-length coding
-* Huffman compression
-    compression.Huffman
+* compression.Huffman
 * **TODO** LZW compression                 
 * **TODO** Deflate (use R-Way Trie)
 
 ### Max-Flow
-* Ford-Fulkerson
-      graph.weighted.FordFulkerson
-* **TODO** maxflow-mincut                  
+* graph.weighted.FordFulkerson
+  * maxflow-mincut
+  * **TODO** unit tests
 
 ### Linear Programming
 * **TODO** Brewer                          
-* **TODO** Simplex                         
+* **TODO** Simplex 
+* **TODO** Edit Distance
 
 * **TODO** A*
 * **TODO** IDA*

@@ -4,7 +4,7 @@ Algorithms and data structures implemented from scratch in Java. I wrote this to
 knowledge, and to have a place where I can try design ideas without production constraints. It is not a
 library and I do not recommend depending on it. `java.util` is faster and better tested.
 
-84 implementations covering about 57 distinct algorithms and data structures.
+85 implementations covering about 58 distinct algorithms and data structures.
 
 ## Contents
 
@@ -19,6 +19,7 @@ library and I do not recommend depending on it. `java.util` is faster and better
 | Math | 8 | six sequential Fibonacci strategies plus a ForkJoin one, fast exponentiation |
 | Search | 3 | binary search over arrays, ints, and inverted arrays |
 | Compression, geometry | 2 | Huffman coding, Graham scan |
+| Data streams | 1 | Bloom filter (two independent hash functions simulating k via Kirsch-Mitzenmacher) |
 
 The implementation count is higher than the algorithm count on purpose. Several algorithms exist in more
 than one form: a generic version and an `int`-specialized one, or a sequential version and a ForkJoin

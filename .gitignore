@@ -1,1 +1,6 @@
 /target
+
+# Local task briefs and agent scratch — never published
+claude-code-brief.md
+/.claude/
+CLAUDE.md

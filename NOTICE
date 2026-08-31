@@ -1,0 +1,27 @@
+alg-java
+Copyright 2024-2026 the alg-java contributors
+
+This product is licensed under the Apache License, Version 2.0.
+See the LICENSE file for the full text.
+
+--------------------------------------------------------------------------------
+Test corpora
+--------------------------------------------------------------------------------
+
+The plain-text corpora under src/test/resources/ are NOT covered by the Apache
+License. They are Project Gutenberg eBooks, included unmodified and with their
+original headers intact, and are used only as realistic input for the sorting and
+string-search test suites. They are not part of any distributable artifact of
+this project.
+
+  pg4300.txt   Ulysses, James Joyce
+               Project Gutenberg eBook #4300
+  pg5000.txt   The Notebooks of Leonardo Da Vinci, Complete, Leonardo Da Vinci
+               Project Gutenberg eBook #5000
+  pg20417.txt  The Outline of Science, Vol. 1 (of 4), J. Arthur Thomson
+               Project Gutenberg eBook #20417
+
+Each file is governed by the Project Gutenberg License reproduced within it and
+published at https://www.gutenberg.org. "Project Gutenberg" is a registered
+trademark of the Project Gutenberg Literary Archive Foundation; its use is
+subject to the terms in those headers.

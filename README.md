@@ -49,17 +49,11 @@ another Gutenberg corpus. Random input hides the cases where a sort actually dif
 
 ## Adversarial tests
 
-Two tests attack implementations rather than verify them.
-
-`AlgorithmicComplexityAttackTest` uses the `Aa`/`BB` hash collision to drive large numbers of keys into a
-single `HashMap` bucket, and measures the degradation. Java 8 made this mostly harmless by switching
-large buckets to balanced trees; the test documents where the boundary now is. It also checks the
-`Math.abs(Integer.MIN_VALUE)` overflow that makes the naive way of computing a bucket index wrong.
-
-`KillJavaSortTest` is meant to attack `java.util.Arrays.sort` with McIlroy's killer adversary (M. D.
-McIlroy, *A Killer Adversary for Quicksort*, 1999), but is currently disabled: the input files it
-expects (`antiquicksort10K.txt`, `antiquicksort250K.txt`, `antiquicksort1M.txt`) are not checked in
-and the assertion is commented out. See `TODO.md`.
+`AlgorithmicComplexityAttackTest` attacks an implementation rather than verifying it. It uses the
+`Aa`/`BB` hash collision to drive large numbers of keys into a single `HashMap` bucket, and measures
+the degradation. Java 8 made this mostly harmless by switching large buckets to balanced trees; the
+test documents where the boundary now is. It also checks the `Math.abs(Integer.MIN_VALUE)` overflow
+that makes the naive way of computing a bucket index wrong.
 
 ## State of the code
 
@@ -68,9 +62,9 @@ tests. The symbol tables run through the shared conformance suites, and `RedBlac
 verifies the red-black invariants — no right-leaning red links, no two consecutive reds, perfect black
 balance, BST order — after randomised and sorted insertion sequences.
 
-Running the previously disabled suites exposed real defects, which are documented rather than hidden:
-every remaining `@Disabled` test states its reason and has a matching entry in `TODO.md`. The known ones
-are: `LLRedBlackBst.delete` destroys the tree (its `fixUp` helper is an unimplemented stub);
+Running the previously disabled suites exposed real defects, which are documented rather than hidden: every
+`@Disabled` test in the symbol table suites states its reason and has a matching entry in `TODO.md`. The
+known ones are: `LLRedBlackBst.delete` destroys the tree (its `fixUp` helper is an unimplemented stub);
 `TernaryTree`'s `delete`, `min` and `max` are buggy and its `floor`/`ceiling` unfinished; `RWayTrie`'s
 ordered operations (`min`/`max`/`floor`/`ceiling`) are stubs; and `PatriciaTree` and `SuffixTree` are
 unfinished sketches, not working data structures.
@@ -84,6 +78,10 @@ algorithms, mostly.
 Apache-2.0, see `LICENSE`. The repository contains no third-party code: the bitwise stream helpers
 originally taken from the algs4 booksite were replaced by an independent reimplementation written
 against a specification (`docs/binary-streams.md`) and conformance tests that were written first.
+
+The test corpora under `src/test/resources/` are the exception, and are not code: they are Project
+Gutenberg eBooks, included unmodified under their own license rather than under Apache-2.0. See
+`NOTICE`.
 
 ## Build
 
